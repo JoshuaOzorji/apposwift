@@ -8,8 +8,8 @@ type Props = {
 };
 const Layout = ({ children, showHero = false }: Props) => {
 	return (
-		<main className='font-lato animate flex flex-col min-h-screen'>
-			<span className='px-2 py-2 md:px-4'>
+		<main className='font-lato animate flex flex-col min-h-screen bg-[#f2f4f3]'>
+			<span>
 				<Header />
 			</span>
 
@@ -17,7 +17,7 @@ const Layout = ({ children, showHero = false }: Props) => {
 				{showHero && <Hero />}
 				<div>{children}</div>
 			</div>
-			<span className='px-2 py-2 md:px-4'>
+			<span>
 				<Footer />
 			</span>
 		</main>

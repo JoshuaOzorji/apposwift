@@ -30,10 +30,10 @@ module.exports = {
 			},
 
 			colors: {
-				pry: "#3c6e71",
-				accent: "#e5e5e5",
+				pry: "#003249",
+				accent: "#d9d9d9",
 				sec: "#ffffff",
-
+				sec2: "#353535",
 				border: "hsl(var(--border))",
 				input: "hsl(var(--input))",
 				ring: "hsl(var(--ring))",

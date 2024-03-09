@@ -4,17 +4,17 @@ import MainNav from "./MainNav";
 
 const Header = () => {
 	return (
-		<main>
-			<div>
-				<Link to='/' className='text-xl flex font-bold text-h1 font-rubik'>
-					<p className=''>Appo</p>
-					<p className=''>Swift</p>
+		<main className='bg-pry'>
+			<div className='flex justify-between items-center mx-auto p-3 md:p-4'>
+				<Link to='/' className='text-h2 flex font-bold text-h1 font-rubik'>
+					<p className='text-[#ced4da]'>Appo</p>
+					<p className='text-accent'>Swift</p>
 				</Link>
 
-				<div>
+				<div className='md:hidden'>
 					<MobileNav />
 				</div>
-				<div>
+				<div className='hidden md:block'>
 					<MainNav />
 				</div>
 			</div>

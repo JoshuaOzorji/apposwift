@@ -1,3 +1,4 @@
+import { CiMenuBurger } from "react-icons/ci";
 import {
 	Sheet,
 	SheetContent,
@@ -8,7 +9,12 @@ import {
 } from "@/components/ui/sheet";
 
 const MobileNav = () => {
-	return <Sheet>MobileNav</Sheet>;
+	return (
+		<main className='text-'>
+			<Sheet>MobileNav</Sheet>
+			<CiMenuBurger />
+		</main>
+	);
 };
 
 export default MobileNav;
