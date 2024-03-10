@@ -31,7 +31,7 @@ module.exports = {
 
 			colors: {
 				pry: "#003249",
-				accent: "#d9d9d9",
+				acent: "#d9d9d9",
 				sec: "#ffffff",
 				sec2: "#353535",
 				border: "hsl(var(--border))",

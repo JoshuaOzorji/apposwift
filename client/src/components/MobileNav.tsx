@@ -7,13 +7,44 @@ import {
 	SheetTitle,
 	SheetTrigger,
 } from "@/components/ui/sheet";
+import { Separator } from "@/components/ui/separator";
+
+import { useAuth0 } from "@auth0/auth0-react";
+import { Button } from "./ui/button";
+import MobileNavLinks from "./MobileNavLinks";
 
 const MobileNav = () => {
+	const { isAuthenticated, loginWithRedirect, user } = useAuth0();
+
 	return (
-		<main className='text-'>
-			<Sheet>MobileNav</Sheet>
-			<CiMenuBurger />
-		</main>
+		<Sheet>
+			<SheetTrigger>
+				<CiMenuBurger className='w-6 h-6 text-acent' />
+			</SheetTrigger>
+
+			<SheetContent>
+				<SheetHeader>
+					<SheetTitle>
+						{isAuthenticated ? (
+							<span>{user?.email}</span>
+						) : (
+							<span>Welcome to AppoSwift</span>
+						)}
+					</SheetTitle>
+
+					<Separator />
+					<SheetDescription className='flex flex-col gap-4 mt-2'>
+						{isAuthenticated ? (
+							<MobileNavLinks />
+						) : (
+							<Button onClick={() => loginWithRedirect(undefined)}>
+								Log in
+							</Button>
+						)}
+					</SheetDescription>
+				</SheetHeader>
+			</SheetContent>
+		</Sheet>
 	);
 };
 

@@ -6,9 +6,6 @@
 	@apply w-[90%] p-1 md:p-2 mx-auto transition-all delay-100;
 }
 
-.bucket2 {
-	@apply w-[96%] p-1 md:p-2 mx-auto transition-all delay-100;
-}
 .text-h1 {
 	@apply text-xl md:text-3xl;
 }
