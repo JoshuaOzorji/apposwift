@@ -12,6 +12,7 @@ import { Separator } from "@/components/ui/separator";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Button } from "./ui/button";
 import MobileNavLinks from "./MobileNavLinks";
+import { FaRegUserCircle } from "react-icons/fa";
 
 const MobileNav = () => {
 	const { isAuthenticated, loginWithRedirect, user } = useAuth0();
@@ -26,7 +27,10 @@ const MobileNav = () => {
 				<SheetHeader>
 					<SheetTitle>
 						{isAuthenticated ? (
-							<span>{user?.email}</span>
+							<span className='flex items-center gap-1'>
+								<FaRegUserCircle className='' />
+								{user?.email}
+							</span>
 						) : (
 							<span>Welcome to AppoSwift</span>
 						)}

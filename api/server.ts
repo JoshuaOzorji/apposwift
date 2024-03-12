@@ -9,7 +9,9 @@ mongoose
 	.then(() => console.log("Connected to database"));
 
 const app = express();
+
 app.use(cors());
+
 app.use(express.json());
 
 // app.get("/test", async (req: Request, res: Response) => {
@@ -18,6 +20,6 @@ app.use(express.json());
 
 app.use("/api/my/user", myUserRoute);
 
-app.listen(8000, () => {
-	console.log("server running on http://localhost:8000");
+app.listen(7000, () => {
+	console.log("server running on http://localhost:7000");
 });
