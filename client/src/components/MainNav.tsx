@@ -13,7 +13,11 @@ const MainNav = () => {
 					<UsernameMenu />
 				</>
 			) : (
-				<Button onClick={async () => await loginWithRedirect()}>Login</Button>
+				<Button
+					onClick={async () => await loginWithRedirect()}
+					className='border border-acent bg-transparent'>
+					Login
+				</Button>
 			)}
 		</main>
 	);
