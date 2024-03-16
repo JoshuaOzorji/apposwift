@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+	--ring: initial;
+}
+
 .bucket {
 	@apply w-[90%] p-1 md:p-2 mx-auto transition-all delay-100;
 }

@@ -15,9 +15,9 @@ import { Button } from "./ui/button";
 const UsernameMenu = () => {
 	const { user, logout } = useAuth0();
 	return (
-		<main className='text-acent'>
+		<main className='text-acent '>
 			<DropdownMenu>
-				<DropdownMenuTrigger className='flex items-center gap-1 focus:outline-none'>
+				<DropdownMenuTrigger className='flex items-center gap-1 focus:outline-none border border-acent py-1 px-2 rounded-md'>
 					<FaRegUserCircle className='' />
 					<p>{user?.email || "User"}</p>
 				</DropdownMenuTrigger>
