@@ -75,6 +75,20 @@ const UserProfileForm = ({
 					)}
 				/>
 
+				<FormField
+					control={form.control}
+					name='name'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Name</FormLabel>
+							<FormControl className='form-focus'>
+								<Input {...field} className='bg-white' />
+							</FormControl>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+
 				<div>
 					<FormField
 						control={form.control}
@@ -82,11 +96,8 @@ const UserProfileForm = ({
 						render={({ field }) => (
 							<FormItem className='flex-1'>
 								<FormLabel>Address Line 1</FormLabel>
-								<FormControl>
-									<Input
-										{...field}
-										className='bg-white focus:outline-none border-0'
-									/>
+								<FormControl className='form-focus'>
+									<Input {...field} className='bg-white ' />
 								</FormControl>
 							</FormItem>
 						)}
@@ -98,7 +109,7 @@ const UserProfileForm = ({
 						render={({ field }) => (
 							<FormItem className='flex-1'>
 								<FormLabel>City</FormLabel>
-								<FormControl>
+								<FormControl className='form-focus'>
 									<Input {...field} className='bg-white' />
 								</FormControl>
 								<FormMessage />
@@ -113,7 +124,7 @@ const UserProfileForm = ({
 							<FormItem className='flex-1'>
 								<FormLabel>Country</FormLabel>
 								<FormControl className='form-focus'>
-									<Input {...field} className='bg-white focus:ring-0' />
+									<Input {...field} className='bg-white ' />
 								</FormControl>
 								<FormMessage />
 							</FormItem>

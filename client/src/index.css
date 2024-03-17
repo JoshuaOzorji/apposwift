@@ -10,6 +10,10 @@
 	@apply w-[90%] p-1 md:p-2 mx-auto transition-all delay-100;
 }
 
+.form-focus {
+	@apply border focus:outline-none focus:border-pry delay-200 transition;
+}
+
 .text-h1 {
 	@apply text-xl md:text-3xl;
 }
