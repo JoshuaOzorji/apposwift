@@ -10,7 +10,7 @@ const MobileNavLinks = () => {
 
 			<Link to='/'>My Restaurant</Link>
 
-			<Link to='/'>User Profile</Link>
+			<Link to='/user-profile'>User Profile</Link>
 
 			<Button onClick={() => logout()} className='bg-pry'>
 				Logout

@@ -53,11 +53,11 @@ const UserProfileForm = ({
 	return (
 		<Form {...form}>
 			<form
-				className='w-full p-2 md:p-4 mx-auto md:w-[70%] lg:w-[60%] gap-2 space-y-2'
+				className='w-full p-2 md:p-4 mx-auto md:w-[70%] lg:w-[50%] gap-2 space-y-2 '
 				onSubmit={form.handleSubmit(onSave)}>
 				<div>
-					<h2>{title}</h2>
-					<FormDescription>
+					<h2 className='text-h1 font-bold'>{title}</h2>
+					<FormDescription className='font-light text-h4 '>
 						View and change your profile information here
 					</FormDescription>
 				</div>
@@ -89,48 +89,46 @@ const UserProfileForm = ({
 					)}
 				/>
 
-				<div>
-					<FormField
-						control={form.control}
-						name='addressLine1'
-						render={({ field }) => (
-							<FormItem className='flex-1'>
-								<FormLabel>Address Line 1</FormLabel>
-								<FormControl className='form-focus'>
-									<Input {...field} className='bg-white ' />
-								</FormControl>
-							</FormItem>
-						)}
-					/>
+				<FormField
+					control={form.control}
+					name='addressLine1'
+					render={({ field }) => (
+						<FormItem className='flex-1'>
+							<FormLabel>Address Line 1</FormLabel>
+							<FormControl className='form-focus'>
+								<Input {...field} className='bg-white ' />
+							</FormControl>
+						</FormItem>
+					)}
+				/>
 
-					<FormField
-						control={form.control}
-						name='city'
-						render={({ field }) => (
-							<FormItem className='flex-1'>
-								<FormLabel>City</FormLabel>
-								<FormControl className='form-focus'>
-									<Input {...field} className='bg-white' />
-								</FormControl>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
+				<FormField
+					control={form.control}
+					name='city'
+					render={({ field }) => (
+						<FormItem className='flex-1'>
+							<FormLabel>City</FormLabel>
+							<FormControl className='form-focus'>
+								<Input {...field} className='bg-white' />
+							</FormControl>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
 
-					<FormField
-						control={form.control}
-						name='country'
-						render={({ field }) => (
-							<FormItem className='flex-1'>
-								<FormLabel>Country</FormLabel>
-								<FormControl className='form-focus'>
-									<Input {...field} className='bg-white ' />
-								</FormControl>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-				</div>
+				<FormField
+					control={form.control}
+					name='country'
+					render={({ field }) => (
+						<FormItem className='flex-1'>
+							<FormLabel>Country</FormLabel>
+							<FormControl className='form-focus'>
+								<Input {...field} className='bg-white ' />
+							</FormControl>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
 
 				<div className='flex'>
 					{isLoading ? (
