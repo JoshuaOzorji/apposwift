@@ -53,83 +53,84 @@ const UserProfileForm = ({
 	return (
 		<Form {...form}>
 			<form
-				className='w-full p-2 md:p-4 mx-auto md:w-[70%] lg:w-[50%] gap-2 space-y-2 '
+				className='w-full p-3 md:p-4 mx-auto md:w-[70%] lg:w-[50%] gap-2 space-y-2 border m-4 shadow-sm'
 				onSubmit={form.handleSubmit(onSave)}>
-				<div>
+				<div className='text-center'>
 					<h2 className='text-h1 font-bold'>{title}</h2>
 					<FormDescription className='font-light text-h4 '>
 						View and change your profile information here
 					</FormDescription>
 				</div>
 
-				<FormField
-					control={form.control}
-					name='email'
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel>Email</FormLabel>
-							<FormControl>
-								<Input {...field} disabled className='bg-white' />
-							</FormControl>
-						</FormItem>
-					)}
-				/>
+				<div className='flex flex-col gap-4'>
+					<FormField
+						control={form.control}
+						name='email'
+						render={({ field }) => (
+							<FormItem className='flex flex-col gap-0'>
+								<FormLabel>Email</FormLabel>
+								<FormControl>
+									<Input {...field} disabled className='bg-white' />
+								</FormControl>
+							</FormItem>
+						)}
+					/>
 
-				<FormField
-					control={form.control}
-					name='name'
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel>Name</FormLabel>
-							<FormControl className='form-focus'>
-								<Input {...field} className='bg-white' />
-							</FormControl>
-							<FormMessage />
-						</FormItem>
-					)}
-				/>
+					<FormField
+						control={form.control}
+						name='name'
+						render={({ field }) => (
+							<FormItem className='flex flex-col gap-0'>
+								<FormLabel>Name</FormLabel>
+								<FormControl className='form-focus'>
+									<Input {...field} className='bg-white' />
+								</FormControl>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
 
-				<FormField
-					control={form.control}
-					name='addressLine1'
-					render={({ field }) => (
-						<FormItem className='flex-1'>
-							<FormLabel>Address Line 1</FormLabel>
-							<FormControl className='form-focus'>
-								<Input {...field} className='bg-white ' />
-							</FormControl>
-						</FormItem>
-					)}
-				/>
+					<FormField
+						control={form.control}
+						name='addressLine1'
+						render={({ field }) => (
+							<FormItem className='flex flex-col gap-0'>
+								<FormLabel>Address Line 1</FormLabel>
+								<FormControl className='form-focus'>
+									<Input {...field} className='bg-white ' />
+								</FormControl>
+							</FormItem>
+						)}
+					/>
 
-				<FormField
-					control={form.control}
-					name='city'
-					render={({ field }) => (
-						<FormItem className='flex-1'>
-							<FormLabel>City</FormLabel>
-							<FormControl className='form-focus'>
-								<Input {...field} className='bg-white' />
-							</FormControl>
-							<FormMessage />
-						</FormItem>
-					)}
-				/>
+					<FormField
+						control={form.control}
+						name='city'
+						render={({ field }) => (
+							<FormItem className='flex flex-col gap-0'>
+								<FormLabel>City</FormLabel>
+								<FormControl className='form-focus'>
+									<Input {...field} className='bg-white' />
+								</FormControl>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
 
-				<FormField
-					control={form.control}
-					name='country'
-					render={({ field }) => (
-						<FormItem className='flex-1'>
-							<FormLabel>Country</FormLabel>
-							<FormControl className='form-focus'>
-								<Input {...field} className='bg-white ' />
-							</FormControl>
-							<FormMessage />
-						</FormItem>
-					)}
-				/>
-
+					<FormField
+						control={form.control}
+						name='country'
+						render={({ field }) => (
+							<FormItem className='flex flex-col gap-0'>
+								<FormLabel>Country</FormLabel>
+								<FormControl className='form-focus'>
+									<Input {...field} className='bg-white ' />
+								</FormControl>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
+				</div>
 				<div className='flex'>
 					{isLoading ? (
 						<LoadingButton />
