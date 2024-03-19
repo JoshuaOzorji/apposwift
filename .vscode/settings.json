@@ -1,3 +1,4 @@
 {
-	"cSpell.words": ["acent", "Appo"]
+	"cSpell.words": ["acent", "Appo"],
+	"editor.wordWrap": "wordWrapColumn"
 }
