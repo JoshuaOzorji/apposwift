@@ -14,8 +14,8 @@ const DetailsSection = () => {
 	return (
 		<main>
 			<div>
-				<h2>Details</h2>
-				<FormDescription>
+				<h2 className='font-bold text-h2'>Details</h2>
+				<FormDescription className='font-light text-h4'>
 					Enter the details about your restaurant
 				</FormDescription>
 			</div>

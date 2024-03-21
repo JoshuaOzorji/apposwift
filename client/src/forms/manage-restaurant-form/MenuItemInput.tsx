@@ -18,7 +18,7 @@ const MenuItemInput = ({ index, removeMenuItem }: Props) => {
 	const { control } = useFormContext();
 
 	return (
-		<main className='flex items-end justify-between flex-wrap'>
+		<main className='flex items-end justify-between flex-wrap border p-2'>
 			<FormField
 				control={control}
 				name={`menuItems.${index}.name`}
@@ -57,7 +57,7 @@ const MenuItemInput = ({ index, removeMenuItem }: Props) => {
 			<Button
 				type='button'
 				onClick={removeMenuItem}
-				className='bg-red-500 max-h-fit'>
+				className='bg-red-600 max-h-fit mt-2 md:mt-0'>
 				Remove
 			</Button>
 		</main>

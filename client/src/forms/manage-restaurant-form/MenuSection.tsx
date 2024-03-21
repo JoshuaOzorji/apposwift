@@ -1,7 +1,6 @@
 import { FormDescription, FormField, FormItem } from "@/components/ui/form";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import MenuItemInput from "./MenuItemInput";
-import { Button } from "@/components/ui/button";
 
 const MenuSection = () => {
 	const { control } = useFormContext();
@@ -11,10 +10,10 @@ const MenuSection = () => {
 		name: "menuItems",
 	});
 	return (
-		<main>
+		<main className='space-y-2'>
 			<div>
-				<h2 className='text-2xl font-bold'>Menu</h2>
-				<FormDescription>
+				<h2 className='text-h2 font-bold'>Menu</h2>
+				<FormDescription className='font-light text-h4'>
 					Create your menu and give each item a name and a price
 				</FormDescription>
 			</div>
@@ -34,9 +33,12 @@ const MenuSection = () => {
 				)}
 			/>
 
-			<Button type='button' onClick={() => append({ name: "", price: "" })}>
+			<button
+				type='button'
+				onClick={() => append({ name: "", price: "" })}
+				className='underline text-h4'>
 				Add Menu Item
-			</Button>
+			</button>
 		</main>
 	);
 };

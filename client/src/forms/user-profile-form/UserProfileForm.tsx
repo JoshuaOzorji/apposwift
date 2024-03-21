@@ -52,7 +52,9 @@ const UserProfileForm = ({
 
 	return (
 		<Form {...form}>
-			<form className='form-container' onSubmit={form.handleSubmit(onSave)}>
+			<form
+				className='form-container border'
+				onSubmit={form.handleSubmit(onSave)}>
 				<div className='text-center'>
 					<h2 className='text-h1 font-bold'>{title}</h2>
 					<FormDescription className='font-light text-h4 '>
