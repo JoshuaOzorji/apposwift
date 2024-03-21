@@ -1,6 +1,7 @@
 import { FormDescription, FormField, FormItem } from "@/components/ui/form";
-import { useFormContext } from "react-hook-form";
+import { useFieldArray, useFormContext } from "react-hook-form";
 import MenuItemInput from "./MenuItemInput";
+import { Button } from "@/components/ui/button";
 
 const MenuSection = () => {
 	const { control } = useFormContext();
@@ -24,11 +25,18 @@ const MenuSection = () => {
 				render={() => (
 					<FormItem>
 						{fields.map((_, index) => (
-							<MenuItemInput />
+							<MenuItemInput
+								index={index}
+								removeMenuItem={() => remove(index)}
+							/>
 						))}
 					</FormItem>
 				)}
 			/>
+
+			<Button type='button' onClick={() => append({ name: "", price: "" })}>
+				Add Menu Item
+			</Button>
 		</main>
 	);
 };

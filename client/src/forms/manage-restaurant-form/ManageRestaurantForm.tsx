@@ -2,6 +2,7 @@ import { Form } from "@/components/ui/form";
 import DetailsSection from "./DetailsSection";
 import { useForm } from "react-hook-form";
 import CuisinesSection from "./CuisinesSection";
+import MenuSection from "./MenuSection";
 
 const ManageRestaurantForm = () => {
 	const form = useForm();
@@ -10,6 +11,7 @@ const ManageRestaurantForm = () => {
 			<form className='form-container'>
 				<DetailsSection />
 				<CuisinesSection />
+				<MenuSection />
 			</form>
 		</Form>
 	);
