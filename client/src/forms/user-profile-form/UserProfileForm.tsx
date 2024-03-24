@@ -131,11 +131,14 @@ const UserProfileForm = ({
 						)}
 					/>
 				</div>
-				<div className='flex'>
+
+				<div className='mx-auto'>
 					{isLoading ? (
-						<LoadingButton />
+						<span className='flex items-center justify-between'>
+							<LoadingButton />
+						</span>
 					) : (
-						<span>
+						<span className='flex items-center justify-between'>
 							<Button type='submit'>{buttonText}</Button>
 						</span>
 					)}

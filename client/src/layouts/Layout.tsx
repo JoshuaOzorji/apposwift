@@ -8,10 +8,10 @@ type Props = {
 };
 const Layout = ({ children, showHero = false }: Props) => {
 	return (
-		<main className='font-lato animate flex flex-col min-h-screen bg-[#f2f4f3]'>
-			<span>
+		<main className='font-lato animate flex flex-col min-h-screen bg-[#f2f4f3] relative'>
+			<div className='sticky'>
 				<Header />
-			</span>
+			</div>
 
 			<div className='bucket flex-1'>
 				{showHero && <Hero />}
