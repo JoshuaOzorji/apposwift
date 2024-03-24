@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import LoadingButton from "@/components/LoadingButton";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Restaurant } from "@/types";
 
 const formSchema = z
 	.object({
@@ -48,9 +49,11 @@ const formSchema = z
 type RestaurantFormData = z.infer<typeof formSchema>;
 
 type Props = {
+	restaurant?: Restaurant;
 	isLoading: boolean;
 	onSave: (restaurantFormData: FormData) => void;
 };
+
 const ManageRestaurantForm = ({ isLoading, onSave }: Props) => {
 	const form = useForm<RestaurantFormData>({
 		resolver: zodResolver(formSchema),
