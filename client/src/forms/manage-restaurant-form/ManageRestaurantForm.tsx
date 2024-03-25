@@ -54,7 +54,7 @@ type Props = {
 	onSave: (restaurantFormData: FormData) => void;
 };
 
-const ManageRestaurantForm = ({ isLoading, onSave }: Props) => {
+const ManageRestaurantForm = ({ isLoading, onSave, restaurant }: Props) => {
 	const form = useForm<RestaurantFormData>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
