@@ -15,6 +15,7 @@ const getMyRestaurant = async (req: Request, res: Response) => {
 		res.status(500).json({ message: "Error fetching restaurant" });
 	}
 };
+
 const createMyRestaurant = async (req: Request, res: Response) => {
 	try {
 		const existingRestaurant = await Restaurant.findOne({
@@ -37,6 +38,29 @@ const createMyRestaurant = async (req: Request, res: Response) => {
 
 		res.status(201).send(restaurant);
 	} catch (error) {
+		res.status(500).json({ message: "Something went wrong" });
+	}
+};
+
+const updateMyRestaurant = async (req: Request, res: Response) => {
+	try {
+		const restaurant = await Restaurant.findOne({
+			user: req.userId,
+		});
+
+		if (!restaurant) {
+			return res.status(404).json({ message: "restaurant not found" });
+		}
+		restaurant.restaurantName = req.body.restaurantName;
+		restaurant.city = req.body.city;
+		restaurant.country = req.body.country;
+		restaurant.deliveryPrice = req.body.deliveryPrice;
+		restaurant.estimatedDeliveryTime = req.body.estimatedDeliveryTime;
+		restaurant.cuisines = req.body.cuisines;
+		restaurant.menuItems = req.body.menuItems;
+		restaurant.lastUpdated = new Date();
+	} catch (error) {
+		console.log("error", error);
 		res.status(500).json({ message: "Something went wrong" });
 	}
 };
