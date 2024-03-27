@@ -10,6 +10,7 @@ import LoadingButton from "@/components/LoadingButton";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Restaurant } from "@/types";
+import { useEffect } from "react";
 
 const formSchema = z
 	.object({
@@ -62,6 +63,30 @@ const ManageRestaurantForm = ({ isLoading, onSave, restaurant }: Props) => {
 			menuItems: [{ name: "", price: 0 }],
 		},
 	});
+
+	useEffect(() => {
+		if (!restaurant) {
+			return;
+		}
+
+		// price lowest domination of 100 = 100pence == 1GBP
+		const deliveryPriceFormatted = parseInt(
+			(restaurant.deliveryPrice / 100).toFixed(2),
+		);
+
+		const menuItemsFormatted = restaurant.menuItems.map((item) => ({
+			...item,
+			price: parseInt((item.price / 100).toFixed(2)),
+		}));
+
+		const updatedRestaurant = {
+			...restaurant,
+			deliveryPrice: deliveryPriceFormatted,
+			menuItems: menuItemsFormatted,
+		};
+
+		form.reset(updatedRestaurant);
+	}, [form, restaurant]);
 
 	const onSubmit = (formDataJson: RestaurantFormData) => {
 		const formData = new FormData();

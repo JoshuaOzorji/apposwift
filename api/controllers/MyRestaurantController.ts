@@ -59,6 +59,13 @@ const updateMyRestaurant = async (req: Request, res: Response) => {
 		restaurant.cuisines = req.body.cuisines;
 		restaurant.menuItems = req.body.menuItems;
 		restaurant.lastUpdated = new Date();
+
+		if (req.file) {
+			const imageUrl = await uploadImage(req.file as Express.Multer.File);
+			restaurant.imageUrl = imageUrl;
+		}
+		await restaurant.save();
+		res.status(200).send(restaurant);
 	} catch (error) {
 		console.log("error", error);
 		res.status(500).json({ message: "Something went wrong" });
@@ -80,4 +87,5 @@ const uploadImage = async (file: Express.Multer.File) => {
 export default {
 	createMyRestaurant,
 	getMyRestaurant,
+	updateMyRestaurant,
 };
