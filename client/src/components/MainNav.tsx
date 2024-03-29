@@ -15,12 +15,12 @@ const MainNav = () => {
 			) : (
 				<Button
 					onClick={async () => await loginWithRedirect()}
-					className='border border-acent bg-transparent'>
+					className='border bg-pry hover:bg-sec'>
 					Login
 				</Button>
 			)}
 		</main>
 	);
 };
-
+// hover:bg-[#8e7af9]
 export default MainNav;

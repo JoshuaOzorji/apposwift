@@ -1,5 +1,13 @@
+import SearchBar from "@/components/SearchBar";
+
 const HomePage = () => {
-	return <div>HomePage</div>;
+	return (
+		<main className=''>
+			<div>
+				<SearchBar placeHolder='Search by City or Town' />
+			</div>
+		</main>
+	);
 };
 
 export default HomePage;

@@ -17,12 +17,12 @@ const UsernameMenu = () => {
 	return (
 		<main className='text-acent '>
 			<DropdownMenu>
-				<DropdownMenuTrigger className='flex items-center gap-1 focus:outline-none border border-acent py-1 px-2 rounded-md'>
+				<DropdownMenuTrigger className='flex items-center gap-1 focus:outline-none border py-1 px-2 rounded-md'>
 					<FaRegUserCircle className='' />
 					<p>{user?.email || "User"}</p>
 				</DropdownMenuTrigger>
 				<DropdownMenuContent className='flex flex-col gap-2 focus:outline-none'>
-					<DropdownMenuItem>
+					<DropdownMenuItem className=''>
 						<Link to='/manage-restaurant'>Manage Restaurant</Link>
 					</DropdownMenuItem>
 					<DropdownMenuItem>
@@ -34,7 +34,7 @@ const UsernameMenu = () => {
 					<DropdownMenuItem>
 						<Button
 							onClick={() => logout()}
-							className='flex flex-1 font-bold bg-pry rounded-none'>
+							className='flex flex-1 font-bold bg-pry rounded-none hover:bg-sec'>
 							Log Out
 						</Button>
 					</DropdownMenuItem>
