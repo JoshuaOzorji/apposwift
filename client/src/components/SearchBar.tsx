@@ -4,16 +4,11 @@ import { Search } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
-type Props = {
-	placeHolder: string;
-};
-
-
-const SearchBar = ({ placeHolder }: Props) => {
+const SearchBar = () => {
 	const form = useForm();
 	return (
 		<Form {...form}>
-			<form>
+			<form className='flex border'>
 				<Search />
 				<FormField
 					control={form.control}
@@ -21,7 +16,11 @@ const SearchBar = ({ placeHolder }: Props) => {
 					render={({ field }) => (
 						<FormItem>
 							<FormControl>
-								<Input {...field} className='' placeholder={placeHolder} />
+								<Input
+									{...field}
+									className=''
+									placeholder='Search by City or Town'
+								/>
 							</FormControl>
 						</FormItem>
 					)}
