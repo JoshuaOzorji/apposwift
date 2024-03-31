@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import AuthCallbackPage from "./pages/AuthCallbackPage";
 import UserProfilePage from "./pages/UserProfilePage";
 import ManageRestaurantPage from "./pages/ManageRestaurantPage";
+import SearchPage from "./pages/SearchPage";
 
 const AppRoutes = () => {
 	return (
@@ -13,6 +14,15 @@ const AppRoutes = () => {
 				element={
 					<Layout>
 						<HomePage />
+					</Layout>
+				}
+			/>
+
+			<Route
+				path='/search/:city'
+				element={
+					<Layout>
+						<SearchPage />
 					</Layout>
 				}
 			/>

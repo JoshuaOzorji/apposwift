@@ -1,14 +1,18 @@
 import Hero from "@/components/Hero";
-import SearchBar from "@/components/SearchBar";
+import SearchBar, { SearchForm } from "@/components/SearchBar";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
+	const navigate = useNavigate();
+
+	const handleSearchSubmit = (searchFormValues: SearchForm) => {
+		navigate({ pathname: `/search/${searchFormValues.searchQuery}` });
+	};
 	return (
 		<main className=''>
 			<div>
 				<Hero />
-				<span className='-mt-3'>
-					<SearchBar />
-				</span>
+				<SearchBar onSubmit={handleSearchSubmit} />
 			</div>
 		</main>
 	);
