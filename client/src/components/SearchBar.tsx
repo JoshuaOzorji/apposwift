@@ -3,6 +3,8 @@ import { Form, FormControl, FormField, FormItem } from "./ui/form";
 import { CiSearch } from "react-icons/ci";
 import { Input } from "./ui/input";
 import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
 
 const formSchema = z.object({
 	searchQuery: z.string({
@@ -14,13 +16,31 @@ export type SearchForm = z.infer<typeof formSchema>;
 
 type Props = {
 	onSubmit: (formData: SearchForm) => void;
+	placeHolder: string;
 	onReset?: () => void;
 	searchQuery?: string;
 };
 
-const SearchBar = ({ onSubmit, searchQuery, onReset }: Props) => {
-	const handleReset = () => {};
-	const form = useForm();
+const SearchBar = ({ onSubmit, onReset, searchQuery, placeHolder }: Props) => {
+	const form = useForm<SearchForm>({
+		resolver: zodResolver(formSchema),
+		defaultValues: {
+			searchQuery,
+		},
+	});
+
+	useEffect(() => {
+		form.reset({ searchQuery });
+	}, [form, searchQuery]);
+
+	const handleReset = () => {
+		form.reset({ searchQuery: "" });
+
+		if (onReset) {
+			onReset();
+		}
+	};
+
 	return (
 		<Form {...form}>
 			<form
@@ -36,7 +56,7 @@ const SearchBar = ({ onSubmit, searchQuery, onReset }: Props) => {
 								<Input
 									{...field}
 									className='border-none shadow-none text-sm focus-visible:ring-0 w-full font-light text-h4'
-									placeholder='Search by City or Town'
+									placeholder={placeHolder}
 								/>
 							</FormControl>
 						</FormItem>
