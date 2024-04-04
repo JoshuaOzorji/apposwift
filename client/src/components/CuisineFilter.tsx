@@ -7,7 +7,7 @@ import { ChangeEvent } from "react";
 type Props = {
 	onChange: (cuisines: string[]) => void;
 	selectedCuisines: string[];
-	isExpanded: boolean;
+	isExpanded?: boolean;
 	onExpandedClick: () => void;
 };
 const CuisineFilter = ({

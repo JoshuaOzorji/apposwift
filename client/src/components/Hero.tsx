@@ -1,4 +1,4 @@
-import image from "../../public/bg-image.jpg";
+import image from "/bg-image.jpg";
 
 const Hero = () => {
 	return (

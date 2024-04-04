@@ -22,9 +22,24 @@ const SearchPage = () => {
 		sortOption: "bestMatch",
 	});
 
-	const [isExpanded, setIsExpanded] = useState<boolean>();
+	const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
 	const { results, isLoading } = useSearchRestaurants(searchState, city);
+
+	const setSelectedCuisines = (selectedCuisines: string[]) => {
+		setSearchState((prevState) => ({
+			...prevState,
+			selectedCuisines,
+			page: 1,
+		}));
+	};
+
+	// const setPage = (page: number) => {
+	// 	setSearchState((prevState) => ({
+	// 		...prevState,
+	// 		page,
+	// 	}));
+	// };
 
 	const setSearchQuery = (searchFormData: SearchForm) => {
 		setSearchState((prevState) => ({
@@ -33,23 +48,46 @@ const SearchPage = () => {
 			page: 1,
 		}));
 	};
+
+	const resetSearch = () => {
+		setSearchState((prevState) => ({
+			...prevState,
+			searchQuery: "",
+			page: 1,
+		}));
+	};
+
+	if (isLoading) {
+		<span>Loading...</span>;
+	}
+
+	if (!results) {
+		return <span>No results found</span>;
+	}
+
+	// if (!results?.data || !city) {
+	// 	return <span>No results found</span>;
+	// }
+
 	return (
 		<main>
 			<div id='cuisines-list'>
 				<CuisineFilter
-					selectedCuisines={}
-					onChange={}
-					isExpanded={}
-					onExpandedClick={}
+					selectedCuisines={searchState.selectedCuisines}
+					onChange={setSelectedCuisines}
+					isExpanded={isExpanded}
+					onExpandedClick={() =>
+						setIsExpanded((prevIsExpanded) => !prevIsExpanded)
+					}
 				/>
 			</div>
 
 			<div>
 				<SearchBar
 					onSubmit={setSearchQuery}
-					searchQuery={}
-					onReset={}
-					placeHolder={}
+					searchQuery={searchState.searchQuery}
+					onReset={resetSearch}
+					placeHolder='Search by Cuisine or Restaurant name'
 				/>
 				<span className='flex justify-between flex-col gap-3 lg:flex-row'>
 					<SearchResultInfo />
@@ -57,7 +95,7 @@ const SearchPage = () => {
 			</div>
 
 			{results.data.map((restaurant) => (
-				<SearchResultCard />
+				<SearchResultCard restaurant={restaurant} />
 			))}
 		</main>
 	);
