@@ -12,7 +12,9 @@ const HomePage = () => {
 		<main className=''>
 			<div>
 				<Hero />
-				<SearchBar onSubmit={handleSearchSubmit} />
+				<div className='md:w-[50%] mx-auto'>
+					<SearchBar onSubmit={handleSearchSubmit} />
+				</div>
 			</div>
 		</main>
 	);

@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
 import { Form, FormControl, FormField, FormItem } from "./ui/form";
-import { CiSearch } from "react-icons/ci";
 import { Input } from "./ui/input";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -45,8 +44,7 @@ const SearchBar = ({ onSubmit, onReset, searchQuery, placeHolder }: Props) => {
 		<Form {...form}>
 			<form
 				onSubmit={form.handleSubmit(onSubmit)}
-				className={`flex items-center border-1 py-1 px-2 md:px-3 rounded-full mx-auto md:w-[50%] flex-row gap-2 md:gap-4 bg-white text-acent flex-wrap shadow-md my-2 md:my-4`}>
-				<CiSearch size={25} className='hidden md:block' />
+				className={`flex items-center border-1  pr-2 mx-auto rounded-md flex-row gap-2 md:gap-4 bg-white text-acent  shadow-md my-2 md:my-4`}>
 				<FormField
 					control={form.control}
 					name='searchQuery'
@@ -55,7 +53,7 @@ const SearchBar = ({ onSubmit, onReset, searchQuery, placeHolder }: Props) => {
 							<FormControl>
 								<Input
 									{...field}
-									className='border-none shadow-none text-sm focus-visible:ring-0 w-full font-light text-h4'
+									className='border-none shadow-none text-sm focus-visible:ring-0 w-full font-light text-h5'
 									placeholder={placeHolder}
 								/>
 							</FormControl>
@@ -66,10 +64,10 @@ const SearchBar = ({ onSubmit, onReset, searchQuery, placeHolder }: Props) => {
 				<button
 					onClick={handleReset}
 					type='button'
-					className='text-acent hover:text-sec animate text-h4'>
+					className='text-acent hover:text-sec animate text-h5'>
 					Reset
 				</button>
-				<button className='text-pry hover:text-sec animate font-bold text-h4'>
+				<button className='text-pry hover:text-sec animate font-bold text-h5'>
 					Search
 				</button>
 			</form>

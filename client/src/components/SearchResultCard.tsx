@@ -1,8 +1,8 @@
 import { Restaurant } from "@/types";
 import { Link } from "react-router-dom";
-import { AspectRatio } from "./ui/aspect-ratio";
-import { Banknote, Clock, Dot } from "lucide-react";
-
+import { PiDotOutlineFill } from "react-icons/pi";
+import { IoTimeOutline } from "react-icons/io5";
+import { TbTruckDelivery } from "react-icons/tb";
 type Props = {
 	restaurant: Restaurant;
 };
@@ -11,33 +11,36 @@ const SearchResultCard = ({ restaurant }: Props) => {
 	return (
 		<Link
 			to={`/detail/${restaurant._id}`}
-			className='grid lg:grid-cols-[2fr_3fr] gap-5 group'>
-			<AspectRatio ratio={16 / 6}>
-				<img src={restaurant.imageUrl} className='' />
-			</AspectRatio>
+			className='flex flex-col md:grid grid-cols-7  md:gap-6 border border-slate-300 rounded-md hover:shadow-md animate md:items-center'>
+			{/* image container	 */}
+			<img
+				src={restaurant.imageUrl}
+				className='w-full h-full object-fill md:col-span-2 rounded-t-md md:rounded-t-none md:rounded-l-md'
+			/>
 
-			<div>
-				<h3 className='text-2xl font-bold tracking-tight mb-2 group-hover:underline'>
-					{restaurant.restaurantName}
-				</h3>
+			<div className='flex flex-col py-2 px-3 md:p-2 md:col-span-5'>
+				<h3 className='text-h2 font-bold'>{restaurant.restaurantName}</h3>
+				<span className='flex text-h4'>
+					{`${restaurant.city},  ${restaurant.country}`}
+				</span>
 
-				<div id='card-content' className='grid md:grid-cols-2 gap-2'>
+				<div id='card-content' className='text-h4'>
 					<div className='flex flex-row flex-wrap'>
 						{restaurant.cuisines.map((item, index) => (
-							<span className='flex'>
+							<span className='flex items-center'>
 								<span>{item}</span>
-								{index < restaurant.cuisines.length - 1 && <Dot />}
+								{index < restaurant.cuisines.length - 1 && <PiDotOutlineFill />}
 							</span>
 						))}
 					</div>
-					<div className='flex gap-2 flex-col'>
-						<div className='flex items-center gap-1 text-green-600'>
-							<Clock className='text-green-600' />
+					<div className='flex flex-col'>
+						<div className='flex items-center text-pry gap-1'>
+							<IoTimeOutline className='text-pry' />
 							{restaurant.estimatedDeliveryTime} mins
 						</div>
 						<div className='flex items-center gap-1'>
-							<Banknote />
-							Delivery from £{(restaurant.deliveryPrice / 100).toFixed(2)}
+							<TbTruckDelivery className='' />
+							Delivery fee £{(restaurant.deliveryPrice / 100).toFixed(2)}
 						</div>
 					</div>
 				</div>

@@ -1,7 +1,6 @@
 import { cuisineList } from "@/config/restaurant-options";
 import { Label } from "./ui/label";
 import { Check, ChevronDown, ChevronUp } from "lucide-react";
-import { Button } from "./ui/button";
 import { ChangeEvent } from "react";
 
 type Props = {
@@ -31,57 +30,61 @@ const CuisineFilter = ({
 
 	return (
 		<>
-			<div className='flex justify-between items-center px-2'>
-				<span className='text-md mb-2'>Filter by Cuisine</span>
-				<span onClick={handleCuisinesReset} className=''>
+			<div className='flex justify-between items-center px-1 text-h5 mb-1'>
+				<span className='font-bold'>Filter by Cuisine</span>
+				<button onClick={handleCuisinesReset} className='underline'>
 					Reset filters
-				</span>
+				</button>
 			</div>
 
-			<div>
-				{cuisineList
-					.slice(0, isExpanded ? cuisineList.length : 7)
-					.map((cuisine) => {
-						const isSelected = selectedCuisines.includes(cuisine);
-						return (
-							<div>
-								<input
-									id={`cuisine_${cuisine}`}
-									type='checkbox'
-									className='hidden'
-									value={cuisine}
-									checked={isSelected}
-									onChange={handleCuisinesChange}
-								/>
-								<Label
-									htmlFor={`cuisine_${cuisine}`}
-									className={`flex flex-1 items-center cursor-pointer text-h4 rounded-full px-4 py-2 font-semibold ${
-										isSelected
-											? "border border-green-600 text-green-600"
-											: "border border-slate-300"
-									}`}>
-									{isSelected && <Check size={20} />}
-									{cuisine}
-								</Label>
-							</div>
-						);
-					})}
+			<section className='border rounded-md px-2 py-1.5'>
+				<div className='flex flex-wrap gap-1'>
+					{cuisineList
+						.slice(0, isExpanded ? cuisineList.length : 7)
+						.map((cuisine) => {
+							const isSelected = selectedCuisines.includes(cuisine);
+							return (
+								<div className='space-y-1'>
+									<input
+										id={`cuisine_${cuisine}`}
+										type='checkbox'
+										className='hidden'
+										value={cuisine}
+										checked={isSelected}
+										onChange={handleCuisinesChange}
+									/>
+									<Label
+										htmlFor={`cuisine_${cuisine}`}
+										className={`flex cursor-pointer text-h4 rounded-full px-2.5 py-0.5 font-semibold ${
+											isSelected
+												? "border border-green-600 text-green-600"
+												: "border border-slate-300"
+										}`}>
+										{isSelected && <Check size={20} />}
+										{cuisine}
+									</Label>
+								</div>
+							);
+						})}
+				</div>
 
-				<Button
-					onClick={onExpandedClick}
-					variant='link'
-					className='mt-4 flex-1'>
-					{isExpanded ? (
-						<span className='flex items-center'>
-							View less <ChevronUp />
-						</span>
-					) : (
-						<span className='flex items-center'>
-							View more <ChevronDown />
-						</span>
-					)}
-				</Button>
-			</div>
+				{/* button */}
+				<div className='my-2'>
+					<button
+						onClick={onExpandedClick}
+						className=' text-h6 items-center flex mx-auto hover:underline animate'>
+						{isExpanded ? (
+							<span className='flex items-center'>
+								View less <ChevronUp size={18} />
+							</span>
+						) : (
+							<span className='flex items-center'>
+								View More <ChevronDown size={18} />
+							</span>
+						)}
+					</button>
+				</div>
+			</section>
 		</>
 	);
 };

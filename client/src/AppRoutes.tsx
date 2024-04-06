@@ -27,6 +27,15 @@ const AppRoutes = () => {
 				}
 			/>
 
+			{/* <Route
+				path='/search'
+				element={
+					<Layout>
+						<SearchPage />
+					</Layout>
+				}
+			/> */}
+
 			<Route
 				path='/user-profile'
 				element={
