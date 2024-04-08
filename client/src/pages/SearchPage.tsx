@@ -1,8 +1,10 @@
 import { useSearchRestaurants } from "@/api-client/RestaurantApi";
 import CuisineFilter from "@/components/CuisineFilter";
+import PaginationSelector from "@/components/PaginationSelector";
 import SearchBar, { SearchForm } from "@/components/SearchBar";
 import SearchResultCard from "@/components/SearchResultCard";
 import SearchResultInfo from "@/components/SearchResultInfo";
+import SortOptionDropdown from "@/components/SortOptionDropdown";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -38,12 +40,12 @@ const SearchPage = () => {
 		}));
 	};
 
-	// const setPage = (page: number) => {
-	// 	setSearchState((prevState) => ({
-	// 		...prevState,
-	// 		page,
-	// 	}));
-	// };
+	const setPage = (page: number) => {
+		setSearchState((prevState) => ({
+			...prevState,
+			page,
+		}));
+	};
 
 	const setSearchQuery = (searchFormData: SearchForm) => {
 		setSearchState((prevState) => ({
@@ -70,8 +72,16 @@ const SearchPage = () => {
 	}
 
 	return (
-		<main className='flex flex-col md:flex-row gap-6 my-3 font-lato'>
-			<aside className='md:w-[25%] border border-slate-300 p-2 rounded-md'>
+		<main className='flex flex-col md:flex-row gap-6 my-2 font-lato'>
+			<aside className='md:w-[25%] border border-slate-300 rounded-md px-2'>
+				<div>
+					<SearchBar
+						onSubmit={setSearchQuery}
+						searchQuery={searchState.searchQuery}
+						onReset={resetSearch}
+						placeHolder='Search by Cuisine or Restaurant name'
+					/>
+				</div>
 				<div id='cuisines-list'>
 					<CuisineFilter
 						selectedCuisines={searchState.selectedCuisines}
@@ -82,26 +92,25 @@ const SearchPage = () => {
 						}
 					/>
 				</div>
-				<div className='w-full'>
-					<SearchBar
-						onSubmit={setSearchQuery}
-						searchQuery={searchState.searchQuery}
-						onReset={resetSearch}
-						placeHolder='Search by Cuisine or Restaurant name'
-					/>
-				</div>
 			</aside>
 
-			<div className='md:w-[75%]'>
-				<span className='flex justify-between flex-col gap-3 lg:flex-row'>
-					<SearchResultInfo />
-				</span>
+			<div className='md:w-[75%] space-y-4'>
+				<SearchResultInfo total={results.pagination.total} city={city} />
 
+				<div>
+					<SortOptionDropdown sortOption='' onChange={} />
+				</div>
 				<span className='space-y-4'>
 					{results.data.map((restaurant) => (
 						<SearchResultCard restaurant={restaurant} />
 					))}
 				</span>
+
+				<PaginationSelector
+					page={results.pagination.page}
+					pages={results.pagination.pages}
+					onPageChange={setPage}
+				/>
 			</div>
 		</main>
 	);
