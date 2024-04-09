@@ -4,7 +4,6 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import { Button } from "./ui/button";
 
 type Props = {
 	onChange: (value: string) => void;
@@ -16,7 +15,7 @@ const SORT_OPTIONS = [
 
 	{ label: "Delivery price", value: "deliveryPrice" },
 
-	{ label: "Estimated delivery price", value: "estimatedDeliveryPrice" },
+	{ label: "Estimated delivery time", value: "estimatedDeliveryTime" },
 ];
 
 const SortOptionDropdown = ({ onChange, sortOption }: Props) => {
@@ -26,14 +25,16 @@ const SortOptionDropdown = ({ onChange, sortOption }: Props) => {
 
 	return (
 		<DropdownMenu>
-			<DropdownMenuTrigger>
-				<Button>Sort by: {selectedSortLabel}</Button>
+			<DropdownMenuTrigger className='focus:outline-none '>
+				<button className='text-h5 border md:py-1 p-1 md:px-2 rounded-md border-slate-300 bg-white'>
+					Sort by: {selectedSortLabel}
+				</button>
 			</DropdownMenuTrigger>
 
 			<DropdownMenuContent>
 				{SORT_OPTIONS.map((option) => (
 					<DropdownMenuItem
-						className='cursor-pointer'
+						className='cursor-pointer text-h5'
 						onClick={() => onChange(option.value)}>
 						{option.label}
 					</DropdownMenuItem>

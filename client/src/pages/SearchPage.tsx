@@ -6,7 +6,7 @@ import SearchResultCard from "@/components/SearchResultCard";
 import SearchResultInfo from "@/components/SearchResultInfo";
 import SortOptionDropdown from "@/components/SortOptionDropdown";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export type SearchState = {
 	searchQuery: string;
@@ -32,6 +32,13 @@ const SearchPage = () => {
 
 	const { results, isLoading } = useSearchRestaurants(searchState, city);
 
+	const setSortOption = (sortOption: string) => {
+		setSearchState((prevState) => ({
+			...prevState,
+			sortOption,
+			page: 1,
+		}));
+	};
 	const setSelectedCuisines = (selectedCuisines: string[]) => {
 		setSearchState((prevState) => ({
 			...prevState,
@@ -63,12 +70,19 @@ const SearchPage = () => {
 		}));
 	};
 
-	if (isLoading) {
+	if (isLoading || !results) {
 		<span>Loading...</span>;
 	}
 
 	if (!results?.data || !city) {
-		return <span>No results found</span>;
+		return (
+			<span>
+				<p>No results found </p>
+				<Link to='/' className='text-pry underline'>
+					Modify search
+				</Link>
+			</span>
+		);
 	}
 
 	return (
@@ -95,11 +109,15 @@ const SearchPage = () => {
 			</aside>
 
 			<div className='md:w-[75%] space-y-4'>
-				<SearchResultInfo total={results.pagination.total} city={city} />
+				<div className='flex justify-between items-center py-0.5'>
+					<SearchResultInfo total={results.pagination.total} city={city} />
 
-				<div>
-					<SortOptionDropdown sortOption='' onChange={} />
+					<SortOptionDropdown
+						sortOption={searchState.sortOption}
+						onChange={(value) => setSortOption(value)}
+					/>
 				</div>
+
 				<span className='space-y-4'>
 					{results.data.map((restaurant) => (
 						<SearchResultCard restaurant={restaurant} />

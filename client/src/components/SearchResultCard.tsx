@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { PiDotOutlineFill } from "react-icons/pi";
 import { IoTimeOutline } from "react-icons/io5";
 import { TbTruckDelivery } from "react-icons/tb";
+
 type Props = {
 	restaurant: Restaurant;
 };

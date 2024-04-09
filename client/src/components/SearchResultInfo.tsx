@@ -8,13 +8,13 @@ type Props = {
 const SearchResultInfo = ({ total, city }: Props) => {
 	return (
 		<main className='my-2'>
-			<span className='text-h5 flex justify-between items-center'>
+			<span className='text-h5 flex flex-col md:flex-row md:gap-0 md:items-center space-x-3'>
 				<p>
 					<span>{total} </span>Restaurants found in{" "}
 					<span className='font-bold'>{city}</span>
 				</p>
 
-				<Link to='/' className='text-pry hover:text-sec animate'>
+				<Link to='/' className='text-pry hover:text-sec animate underline'>
 					Change Location
 				</Link>
 			</span>
