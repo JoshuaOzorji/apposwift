@@ -27,7 +27,7 @@
 }
 
 .text-h3 {
-	@apply text-[14px] md:text-base;
+	@apply text-[13px] md:text-base;
 }
 
 .text-h4 {

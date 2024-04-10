@@ -7,7 +7,7 @@ type Props = {
 
 const RestaurantInfo = ({ restaurant }: Props) => {
 	return (
-		<main className='space-y-2'>
+		<main className='space-y-2 bg-white p-3'>
 			<span className='flex items-end space-x-2'>
 				<h1 className='font-bold text-h1'>{restaurant.restaurantName},</h1>
 				<p>
