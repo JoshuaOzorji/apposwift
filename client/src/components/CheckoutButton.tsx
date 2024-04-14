@@ -39,20 +39,22 @@ const CheckoutButton = ({ onCheckout, disabled, isLoading }: Props) => {
 		return <LoadingButton />;
 	}
 	return (
-		<Dialog>
-			<DialogTrigger asChild>
-				<Button disabled={disabled}>Go to Checkout</Button>
-			</DialogTrigger>
-			<DialogContent>
-				<UserProfileForm
-					currentUser={currentUser}
-					onSave={onCheckout}
-					isLoading={isGetUserLoading}
-					title='Confirm delivery details'
-					buttonText='Continue to payment'
-				/>
-			</DialogContent>
-		</Dialog>
+		<div className='mx-auto'>
+			<Dialog>
+				<DialogTrigger asChild>
+					<Button disabled={disabled}>Go to Checkout</Button>
+				</DialogTrigger>
+				<DialogContent className='w-full h-full py-4'>
+					<UserProfileForm
+						currentUser={currentUser}
+						onSave={onCheckout}
+						isLoading={isGetUserLoading}
+						title='Confirm Delivery Details'
+						buttonText='Continue to payment'
+					/>
+				</DialogContent>
+			</Dialog>
+		</div>
 	);
 };
 

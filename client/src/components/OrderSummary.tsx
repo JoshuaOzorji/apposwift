@@ -1,8 +1,8 @@
 import { CartItem } from "@/pages/DetailPage";
 import { Restaurant } from "@/types";
-import { Badge } from "./ui/badge";
 import { HiOutlineTrash } from "react-icons/hi2";
 import { Separator } from "./ui/separator";
+import { Badge } from "./ui/badge";
 
 type Props = {
 	restaurant: Restaurant;
@@ -23,33 +23,42 @@ const OrderSummary = ({ restaurant, cartItems, removeFromCart }: Props) => {
 	};
 
 	return (
-		<main>
-			<div>
-				<p>Your Order</p>
-				<p>£{getTotalCost()}</p>
-			</div>
+		<main className='p-4 md:p-6 text-[13px] md:text-[0.93rem]'>
+			<span className=''>
+				<h1 className='text-center bg-slate-100 rounded-md font-bold p-0.5'>
+					Order Details
+				</h1>
+			</span>
 
-			<div>
+			<aside className='space-y-2 py-1 mt-3'>
 				{cartItems.map((item) => (
 					<div className='flex justify-between'>
-						<span>
+						<div className='flex'>
 							<Badge>{item.quantity}</Badge>
-						</span>
+							<p className='pl-1'>{item.name}</p>
+						</div>
+
 						<span className='flex items-center gap-1'>
+							£{((item.price * item.quantity) / 100).toFixed(2)}
 							<HiOutlineTrash
-								className='cursor-pointer text-red-600 w-4 h-4 md:h-5 md:w-5'
+								className='cursor-pointer text-red-600 w-3 h-3 md:h-4 md:w-4'
 								onClick={() => removeFromCart(item)}
 							/>
-							£{((item.price * item.quantity) / 100).toFixed(2)}
 						</span>
 					</div>
 				))}
 				<Separator />
-				<div className='flex justify-between'>
+				<span className='flex justify-between'>
 					<p>Delivery</p>
 					<p>£{(restaurant.deliveryPrice / 100).toFixed(2)}</p>
-				</div>
-			</div>
+				</span>
+
+				<Separator />
+				<span className='flex justify-between font-bold'>
+					<p>Total:</p>
+					<span>£{getTotalCost()}</span>
+				</span>
+			</aside>
 		</main>
 	);
 };

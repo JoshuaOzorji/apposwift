@@ -15,11 +15,13 @@ const UserProfilePage = () => {
 	}
 
 	return (
-		<UserProfileForm
-			currentUser={currentUser}
-			onSave={updateUser}
-			isLoading={isUpdateLoading}
-		/>
+		<div className='md:w-[70%] lg:w-[50%] mx-auto'>
+			<UserProfileForm
+				currentUser={currentUser}
+				onSave={updateUser}
+				isLoading={isUpdateLoading}
+			/>
+		</div>
 	);
 };
 

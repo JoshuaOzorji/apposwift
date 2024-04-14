@@ -7,7 +7,7 @@
 }
 
 .form-container {
-	@apply *:w-full p-3 md:p-4 mx-auto md:w-[70%] lg:w-[50%] gap-2 space-y-2 m-4 shadow-sm;
+	@apply *:w-full p-3 md:p-4 mx-auto gap-2 space-y-2 m-4 shadow-sm;
 }
 
 .bucket {

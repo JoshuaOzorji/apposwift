@@ -14,7 +14,7 @@ const ManageRestaurantPage = () => {
 
 	const isEditing = !!restaurant;
 	return (
-		<div>
+		<div className='md:w-[70%] lg:w-[50%] mx-auto'>
 			<ManageRestaurantForm
 				restaurant={restaurant}
 				onSave={isEditing ? updateRestaurant : createRestaurant}

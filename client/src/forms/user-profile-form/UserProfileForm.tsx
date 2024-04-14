@@ -53,7 +53,7 @@ const UserProfileForm = ({
 	return (
 		<Form {...form}>
 			<form
-				className='form-container border'
+				className='form-container border rounded-md'
 				onSubmit={form.handleSubmit(onSave)}>
 				<div className='text-center'>
 					<h2 className='text-h1 font-bold'>{title}</h2>
