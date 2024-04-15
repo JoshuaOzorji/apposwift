@@ -1,4 +1,6 @@
-import UserProfileForm from "@/forms/user-profile-form/UserProfileForm";
+import UserProfileForm, {
+	UserFormData,
+} from "@/forms/user-profile-form/UserProfileForm";
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useLocation } from "react-router-dom";
@@ -7,7 +9,7 @@ import LoadingButton from "./LoadingButton";
 import { Button } from "./ui/button";
 
 type Props = {
-	onCheckout: () => void;
+	onCheckout: (userFormData: UserFormData) => void;
 	disabled: boolean;
 	isLoading: boolean;
 };
