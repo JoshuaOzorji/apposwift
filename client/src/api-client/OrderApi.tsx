@@ -17,10 +17,11 @@ type CheckoutSessionRequest = {
 	};
 	restaurantId: string;
 };
+
 export const useCreateCheckoutSession = () => {
 	const { getAccessTokenSilently } = useAuth0();
 
-	const useCreateCheckoutSessionRequest = async (
+	const createCheckoutSessionRequest = async (
 		checkoutSessionRequest: CheckoutSessionRequest,
 	) => {
 		const accessToken = await getAccessTokenSilently();
@@ -48,7 +49,7 @@ export const useCreateCheckoutSession = () => {
 		isLoading,
 		error,
 		reset,
-	} = useMutation(useCreateCheckoutSessionRequest);
+	} = useMutation(createCheckoutSessionRequest);
 
 	if (error) {
 		toast.error(error.toString());

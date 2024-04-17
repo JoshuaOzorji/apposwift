@@ -34,7 +34,11 @@ const CheckoutButton = ({ onCheckout, disabled, isLoading }: Props) => {
 	};
 
 	if (!isAuthenticated) {
-		return <Button onClick={onLogin}>Log in to check out</Button>;
+		return (
+			<Button onClick={onLogin} className='mx-auto'>
+				Log in to check out
+			</Button>
+		);
 	}
 
 	if (isAuthLoading || !currentUser || isLoading) {
@@ -52,7 +56,7 @@ const CheckoutButton = ({ onCheckout, disabled, isLoading }: Props) => {
 						onSave={onCheckout}
 						isLoading={isGetUserLoading}
 						title='Confirm Delivery Details'
-						buttonText='Continue to payment'
+						buttonText='Continue to Payment'
 					/>
 				</DialogContent>
 			</Dialog>
