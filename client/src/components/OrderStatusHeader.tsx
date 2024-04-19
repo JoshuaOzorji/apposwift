@@ -1,5 +1,6 @@
 import { Order } from "@/types";
 import { ORDER_STATUS } from "@/config/order-status-config";
+import { Progress } from "./ui/progress";
 
 type Props = {
 	order: Order;
@@ -31,6 +32,7 @@ const OrderStatusHeader = ({ order }: Props) => {
 				<span>Order Status: {getOrderStatusInfo()?.label}</span>
 				<span>Expected by: {getExpectedDelivery()}</span>
 			</h1>
+			<Progress value={getOrderStatusInfo().progressValue} />
 		</>
 	);
 };

@@ -41,9 +41,7 @@ const MobileNav = () => {
 						{isAuthenticated ? (
 							<MobileNavLinks />
 						) : (
-							<Button onClick={() => loginWithRedirect(undefined)}>
-								Log in
-							</Button>
+							<Button onClick={() => loginWithRedirect()}>Log in</Button>
 						)}
 					</SheetDescription>
 				</SheetHeader>

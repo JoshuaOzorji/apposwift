@@ -16,9 +16,10 @@ const OrderStatusPage = () => {
 		<main>
 			{orders.map((order) => (
 				<div>
-					<OrderStatusHeader />
+					<OrderStatusHeader order={order} />
 					<div>
-						<OrderStatusDetail />
+						<OrderStatusDetail order={order} />
+						<img src={order.restaurant.imageUrl} alt='Restaurant image' />
 					</div>
 				</div>
 			))}
