@@ -92,6 +92,8 @@ const getMyRestaurantOrders = async (req: Request, res: Response) => {
 	}
 };
 
+const updateOrderStatus = async (req: Request, res: Response) => {};
+
 const uploadImage = async (file: Express.Multer.File) => {
 	const image = file;
 

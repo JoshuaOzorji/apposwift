@@ -22,9 +22,16 @@ const UsernameMenu = () => {
 					<p className='text-base'>{user?.email || "User"}</p>
 				</DropdownMenuTrigger>
 				<DropdownMenuContent className='flex flex-col gap-2 focus:outline-none'>
+					<DropdownMenuItem>
+						<Link to='/order-status' className=''>
+							Order Status
+						</Link>
+					</DropdownMenuItem>
+
 					<DropdownMenuItem className=''>
 						<Link to='/manage-restaurant'>Manage Restaurant</Link>
 					</DropdownMenuItem>
+
 					<DropdownMenuItem>
 						<Link to='/user-profile' className=''>
 							User Profile
