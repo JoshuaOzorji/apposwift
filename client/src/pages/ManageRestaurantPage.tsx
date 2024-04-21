@@ -18,9 +18,10 @@ const ManageRestaurantPage = () => {
 	const { orders } = useGetMyRestaurantOrders();
 
 	const isEditing = !!restaurant;
+
 	return (
-		<Tabs>
-			<TabsList>
+		<Tabs className='md:w-[70%] lg:w-[60%] mx-auto' defaultValue='orders'>
+			<TabsList className='border border-slate-300'>
 				<TabsTrigger value='orders'>Orders</TabsTrigger>
 				<TabsTrigger value='manage-restaurant'>Manage Restaurant</TabsTrigger>
 			</TabsList>
@@ -31,7 +32,7 @@ const ManageRestaurantPage = () => {
 					<OrderItemCard order={order} />
 				))}
 			</TabsContent>
-			{/* <div className='md:w-[70%] lg:w-[50%] mx-auto'> */}
+
 			<TabsContent value='manage-restaurant'>
 				<ManageRestaurantForm
 					restaurant={restaurant}
@@ -39,7 +40,6 @@ const ManageRestaurantPage = () => {
 					isLoading={isCreateLoading || isUpdateLoading}
 				/>
 			</TabsContent>
-			{/* </div> */}
 		</Tabs>
 	);
 };

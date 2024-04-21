@@ -1,4 +1,3 @@
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 import {
 	FormControl,
 	FormDescription,
@@ -15,7 +14,7 @@ const ImageSection = () => {
 	const existingImageUrl = watch("imageUrl");
 
 	return (
-		<main>
+		<main className='space-y-2'>
 			<div>
 				<h2 className='text-h2 font-bold'>Image</h2>
 				<FormDescription className='font-light text-h4'>
@@ -27,11 +26,12 @@ const ImageSection = () => {
 				</FormDescription>
 			</div>
 
-			<div className=''>
+			<div className='space-y-1.5'>
 				{existingImageUrl && (
-					<AspectRatio ratio={16 / 9}>
-						<img src={existingImageUrl} className='rounded-md object-cover' />
-					</AspectRatio>
+					<img
+						src={existingImageUrl}
+						className='rounded-md object-cover md:h-[60vh] w-full'
+					/>
 				)}
 
 				<FormField
