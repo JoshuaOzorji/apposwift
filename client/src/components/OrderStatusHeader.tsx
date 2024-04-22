@@ -26,14 +26,28 @@ const OrderStatusHeader = ({ order }: Props) => {
 			ORDER_STATUS.find((o) => o.value === order.status) || ORDER_STATUS[0]
 		);
 	};
+
 	return (
-		<>
-			<h1>
-				<span>Order Status: {getOrderStatusInfo()?.label}</span>
-				<span>Expected by: {getExpectedDelivery()}</span>
-			</h1>
-			<Progress value={getOrderStatusInfo().progressValue} />
-		</>
+		<main className='flex flex-col gap-2 text-h3'>
+			<div className='space-y-2'>
+				<span className='flex gap-1'>
+					<p className='font-bold'>Status: </p>
+					{""}
+					{getOrderStatusInfo()?.label}
+				</span>
+				<span className='flex gap-1'>
+					<p className='font-bold'>Expected by:</p> {getExpectedDelivery()}
+				</span>
+			</div>
+
+			<span className='flex gap-1 items-center'>
+				<p className='font-bold'>Progress:</p>
+				<Progress
+					value={getOrderStatusInfo().progressValue}
+					className='border'
+				/>
+			</span>
+		</main>
 	);
 };
 

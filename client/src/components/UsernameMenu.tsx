@@ -15,13 +15,13 @@ import { Button } from "./ui/button";
 const UsernameMenu = () => {
 	const { user, logout } = useAuth0();
 	return (
-		<main className='text-acent '>
+		<main className='text-acent'>
 			<DropdownMenu>
 				<DropdownMenuTrigger className='flex items-center gap-1 focus:outline-none border py-1 px-2 rounded-md'>
 					<FaRegUserCircle className='' size={20} />
 					<p className='text-base'>{user?.email || "User"}</p>
 				</DropdownMenuTrigger>
-				<DropdownMenuContent className='flex flex-col gap-2 focus:outline-none'>
+				<DropdownMenuContent className='flex flex-col gap-1 focus:outline-none'>
 					<DropdownMenuItem>
 						<Link to='/order-status' className=''>
 							Order Status

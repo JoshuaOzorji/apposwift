@@ -48,39 +48,43 @@ const OrderItemCard = ({ order }: Props) => {
 	return (
 		<Card>
 			<CardHeader>
-				<CardTitle>
-					<div>
-						Customer Name: <span>{order.deliveryDetails.name}</span>
+				<CardTitle className='text-h3 font-normal space-y-2 font-lato'>
+					<div className='flex gap-1'>
+						<p className='font-bold'>Customer Name: </p>{" "}
+						<span>{order.deliveryDetails.name}</span>
 					</div>
 
-					<div>
-						Delivery address: <span>{order.deliveryDetails.addressLine1}</span>
+					<div className='flex gap-1'>
+						<p className='font-bold'>Delivery address:</p>{" "}
+						<span>{order.deliveryDetails.addressLine1}</span>
 					</div>
 
-					<div>
-						Time:
+					<div className='flex gap-1'>
+						<p className='font-bold'>Time:</p>
 						<span>{getTime()}</span>
 					</div>
 
-					<div>
-						Total Cost: <span>£{(order.totalAmount / 100).toFixed(2)}</span>
+					<div className='flex gap-1'>
+						<p className='font-bold'>Total Cost:</p>
+						<span>£{(order.totalAmount / 100).toFixed(2)}</span>
 					</div>
 				</CardTitle>
 				<Separator />
 			</CardHeader>
 
-			<CardContent>
+			<CardContent className='text-h3'>
 				<div>
+					<p>Item(s) ordered</p>
 					{order.cartItems.map((cartItem) => (
-						<span>
+						<span className='flex gap-1'>
 							<Badge>{cartItem.quantity}</Badge>
 							{cartItem.name}
 						</span>
 					))}
 				</div>
 
-				<div>
-					<Label htmlFor='status'></Label>
+				<div className='flex gap-1 items-center'>
+					<Label htmlFor='status'>Update Status: </Label>
 					<Select
 						value={status}
 						disabled={isLoading}

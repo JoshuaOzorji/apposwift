@@ -7,17 +7,9 @@ type Props = {
 
 const OrderStatusDetail = ({ order }: Props) => {
 	return (
-		<main>
-			<div>
-				<span>Delivering to:</span>
-				<span>{order.deliveryDetails.name}</span>
-				<span>
-					{order.deliveryDetails.addressLine1}, {order.deliveryDetails.city}
-				</span>
-			</div>
-
+		<main className='flex flex-col gap-2 text-h3'>
 			<div className='flex flex-col'>
-				<span>Your Order</span>
+				<span className='font-bold'>Items Ordered: </span>
 				<ul>
 					{order.cartItems.map((item) => (
 						<li>
@@ -26,9 +18,16 @@ const OrderStatusDetail = ({ order }: Props) => {
 					))}
 				</ul>
 			</div>
+			<div className='space-x-1'>
+				<span className='font-bold'>Delivering to:</span>
+				<span>{order.deliveryDetails.name},</span>
+				<span>
+					{order.deliveryDetails.addressLine1}, {order.deliveryDetails.city}
+				</span>
+			</div>
 
 			<Separator />
-			<div className='flex flex-col'>
+			<div className='flex font-bold justify-between text-h2'>
 				<span>Total</span>
 				<span>£{(order.totalAmount / 100).toFixed(2)}</span>
 			</div>
