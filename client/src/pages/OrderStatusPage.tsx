@@ -1,4 +1,5 @@
 import { useGetMyOrders } from "@/api-client/OrderApi";
+import Loading from "@/components/Loading";
 import OrderStatusDetail from "@/components/OrderStatusDetail";
 import OrderStatusHeader from "@/components/OrderStatusHeader";
 
@@ -6,7 +7,7 @@ const OrderStatusPage = () => {
 	const { orders, isLoading } = useGetMyOrders();
 
 	if (isLoading) {
-		return "Loading...";
+		return <Loading />;
 	}
 
 	if (!orders || orders.length === 0) {
@@ -20,11 +21,6 @@ const OrderStatusPage = () => {
 				<div className='space-y-2 p-2 md:p-4 border rounded-md shadow-sm'>
 					<OrderStatusHeader order={order} />
 					<OrderStatusDetail order={order} />
-
-					{/* Image */}
-					{/* <span className='md:w-[50%] '>
-						<img src={order.restaurant.imageUrl} alt='Restaurant image' />
-					</span> */}
 				</div>
 			))}
 		</main>

@@ -1,5 +1,6 @@
 import { useSearchRestaurants } from "@/api-client/RestaurantApi";
 import CuisineFilter from "@/components/CuisineFilter";
+import Loading from "@/components/Loading";
 import PaginationSelector from "@/components/PaginationSelector";
 import SearchBar, { SearchForm } from "@/components/SearchBar";
 import SearchResultCard from "@/components/SearchResultCard";
@@ -71,7 +72,9 @@ const SearchPage = () => {
 	};
 
 	if (isLoading || !results) {
-		<span>Loading...</span>;
+		<span>
+			<Loading />
+		</span>;
 	}
 
 	if (!results?.data || !city) {

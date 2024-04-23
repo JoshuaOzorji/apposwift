@@ -9,6 +9,7 @@ import { Card, CardFooter } from "@/components/ui/card";
 import CheckoutButton from "@/components/CheckoutButton";
 import { useCreateCheckoutSession } from "@/api-client/OrderApi";
 import { UserFormData } from "@/forms/user-profile-form/UserProfileForm";
+import Loading from "@/components/Loading";
 
 export type CartItem = {
 	_id: string;
@@ -105,7 +106,7 @@ const DetailPage = () => {
 	};
 
 	if (isLoading || !restaurant) {
-		return "Loading...";
+		return <Loading />;
 	}
 	return (
 		<main>
@@ -118,7 +119,7 @@ const DetailPage = () => {
 					<RestaurantInfo restaurant={restaurant} />
 
 					<p className='text-pry text-h2 underline text-'>Menu</p>
-					{restaurant.menuItems.map((menuItem) => (
+					{restaurant?.menuItems?.map((menuItem) => (
 						<MenuItem
 							menuItem={menuItem}
 							addToCart={() => addToCart(menuItem)}

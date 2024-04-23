@@ -16,13 +16,17 @@ const getRestaurant = async (req: Request, res: Response) => {
 	}
 };
 
-export const getAllRestaurants = async (req: Request, res: Response) => {
+export const featuredRestaurants = async (req: Request, res: Response) => {
 	try {
-		const restaurants = await Restaurant.find();
-		res.status(200).json(restaurants);
+		const featuredRestaurants = await Restaurant.find();
+		featuredRestaurants.sort(
+			(a, b) => b.lastUpdated.getTime() - a.lastUpdated.getTime(),
+		);
+		const lastFiveHotels = featuredRestaurants.slice(0, 4);
+		res.status(200).json(lastFiveHotels);
 	} catch (error) {
 		console.log(error);
-		res.status(500).json({ message: "Something went wrong" });
+		res.status(500).json({ message: "Error fetching restaurants" });
 	}
 };
 
@@ -94,8 +98,11 @@ const searchRestaurant = async (req: Request, res: Response) => {
 	}
 };
 
+const searchFunction = async (req: Request, res: Response) => {};
+
 export default {
 	getRestaurant,
 	searchRestaurant,
-	getAllRestaurants,
+	featuredRestaurants,
+	searchFunction,
 };

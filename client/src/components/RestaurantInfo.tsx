@@ -16,7 +16,7 @@ const RestaurantInfo = ({ restaurant }: Props) => {
 			</span>
 
 			<div className='flex text-h4'>
-				{restaurant.cuisines.map((item, index) => (
+				{restaurant.cuisines?.map((item, index) => (
 					<div className='flex items-center'>
 						<span>{item}</span>
 						{index < restaurant.cuisines.length - 1 && <PiDotOutlineFill />}

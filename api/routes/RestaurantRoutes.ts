@@ -23,6 +23,16 @@ router.get(
 	RestaurantController.searchRestaurant,
 );
 
-router.get("/featured-restaurants", RestaurantController.getAllRestaurants);
+router.get(
+	"/search",
+	param("city")
+		.isString()
+		.trim()
+		.notEmpty()
+		.withMessage("City parameter must be a valid string"),
+	RestaurantController.searchFunction,
+);
+
+router.get("/", RestaurantController.featuredRestaurants);
 
 export default router;
