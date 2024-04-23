@@ -16,6 +16,16 @@ const getRestaurant = async (req: Request, res: Response) => {
 	}
 };
 
+export const getAllRestaurants = async (req: Request, res: Response) => {
+	try {
+		const restaurants = await Restaurant.find();
+		res.status(200).json(restaurants);
+	} catch (error) {
+		console.log(error);
+		res.status(500).json({ message: "Something went wrong" });
+	}
+};
+
 const searchRestaurant = async (req: Request, res: Response) => {
 	try {
 		const city = req.params.city;
@@ -87,4 +97,5 @@ const searchRestaurant = async (req: Request, res: Response) => {
 export default {
 	getRestaurant,
 	searchRestaurant,
+	getAllRestaurants,
 };

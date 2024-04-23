@@ -23,4 +23,6 @@ router.get(
 	RestaurantController.searchRestaurant,
 );
 
+router.get("/featured-restaurants", RestaurantController.getAllRestaurants);
+
 export default router;

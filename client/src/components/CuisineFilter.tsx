@@ -55,12 +55,12 @@ const CuisineFilter = ({
 									/>
 									<Label
 										htmlFor={`cuisine_${cuisine}`}
-										className={`flex cursor-pointer text-h4 rounded-full px-2.5 py-0.5 font-semibold ${
+										className={`flex cursor-pointer text-h4 rounded-full px-2.5 py-0.5 font-semibold items-center ${
 											isSelected
-												? "border border-green-600 text-green-600"
+												? "border border-pry text-pry"
 												: "border border-slate-300"
 										}`}>
-										{isSelected && <Check size={20} />}
+										{isSelected && <Check size={18} />}
 										{cuisine}
 									</Label>
 								</div>

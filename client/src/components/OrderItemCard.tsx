@@ -1,7 +1,6 @@
 import { Order, OrderStatus } from "@/types";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Separator } from "./ui/separator";
-import { Badge } from "lucide-react";
 import { Label } from "./ui/label";
 import {
 	Select,
@@ -13,6 +12,7 @@ import {
 import { ORDER_STATUS } from "@/config/order-status-config";
 import { useUpdateMyRestaurantOrder } from "@/api-client/MyRestaurantApi";
 import { useEffect, useState } from "react";
+import { VscDebugBreakpointLog } from "react-icons/vsc";
 
 type Props = {
 	order: Order;
@@ -46,7 +46,7 @@ const OrderItemCard = ({ order }: Props) => {
 		return `${hours}:${paddedMinutes}`;
 	};
 	return (
-		<Card>
+		<Card className=''>
 			<CardHeader>
 				<CardTitle className='text-h3 font-normal space-y-2 font-lato'>
 					<div className='flex gap-1'>
@@ -72,30 +72,34 @@ const OrderItemCard = ({ order }: Props) => {
 				<Separator />
 			</CardHeader>
 
-			<CardContent className='text-h3'>
+			<CardContent className='text-h3 space-y-2'>
 				<div>
-					<p>Item(s) ordered</p>
+					<p className='font-bold'>Item(s) ordered:</p>
 					{order.cartItems.map((cartItem) => (
-						<span className='flex gap-1'>
-							<Badge>{cartItem.quantity}</Badge>
+						<span className='flex gap-1 items-center'>
+							<VscDebugBreakpointLog>{cartItem.quantity}</VscDebugBreakpointLog>
 							{cartItem.name}
 						</span>
 					))}
 				</div>
 
-				<div className='flex gap-1 items-center'>
-					<Label htmlFor='status'>Update Status: </Label>
+				<div className='flex gap-1 items-center flex-wrap md:flex-nowrap'>
+					<Label htmlFor='status' className='font-bold md:whitespace-nowrap'>
+						Update Status:{" "}
+					</Label>
 					<Select
 						value={status}
 						disabled={isLoading}
 						onValueChange={(value) => handleStatusChange(value as OrderStatus)}>
-						<SelectTrigger id='status'>
+						<SelectTrigger id='status' className='text-h3 h-9'>
 							<SelectValue placeholder='Status' />
 						</SelectTrigger>
 
-						<SelectContent>
+						<SelectContent position='popper'>
 							{ORDER_STATUS.map((status) => (
-								<SelectItem value={status.value}>{status.label}</SelectItem>
+								<SelectItem value={status.value} className='text-h3'>
+									{status.label}
+								</SelectItem>
 							))}
 						</SelectContent>
 					</Select>

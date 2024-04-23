@@ -13,15 +13,11 @@ const OrderStatusPage = () => {
 		return "No orders found";
 	}
 	return (
-		<main className='border p-3 rounded-md shadow-sm my-6 space-y-2 w-full mx-auto md:w-[60%] lg:w-[50%]'>
-			<span className=''>
-				<p className='text-center font-bold bg-slate-200 text-lg rounded-md'>
-					Order
-				</p>
-			</span>
+		<main className='my-4 space-y-2 mx-auto md:w-[60%] lg:w-[50%]'>
+			<p className='text-center font-bold bg-slate-200 text-lg '>Order</p>
 
 			{orders.map((order) => (
-				<div className='space-y-2 p-2 md:p-4'>
+				<div className='space-y-2 p-2 md:p-4 border rounded-md shadow-sm'>
 					<OrderStatusHeader order={order} />
 					<OrderStatusDetail order={order} />
 
