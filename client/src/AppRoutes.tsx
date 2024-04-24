@@ -8,6 +8,7 @@ import SearchPage from "./pages/SearchPage";
 import DetailPage from "./pages/DetailPage";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import OrderStatusPage from "./pages/OrderStatusPage";
+import Restaurants from "./pages/Restaurants";
 
 const AppRoutes = () => {
 	return (
@@ -30,6 +31,14 @@ const AppRoutes = () => {
 				}
 			/>
 
+			<Route
+				path='/restaurants'
+				element={
+					<Layout>
+						<Restaurants />
+					</Layout>
+				}
+			/>
 			<Route
 				path='/detail/:restaurantId'
 				element={

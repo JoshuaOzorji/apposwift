@@ -15,7 +15,7 @@ const FeaturedRestaurants = () => {
 				<h1 className='text-h2 font-bold font-rubik'>Featured</h1>
 
 				<Link
-					to='/search'
+					to='/restaurants'
 					className='text-h3 hover:underline animate font-rubik font-light'>
 					See more
 				</Link>

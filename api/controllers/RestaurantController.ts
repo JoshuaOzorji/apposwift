@@ -16,13 +16,36 @@ const getRestaurant = async (req: Request, res: Response) => {
 	}
 };
 
+const getAllRestaurants = async (req: Request, res: Response) => {
+	const page = parseInt(req.query.page as string) || 1;
+	const pageSize = parseInt(req.query.pageSize as string) || 10;
+
+	try {
+		const totalCount = await Restaurant.countDocuments();
+		const totalPages = Math.ceil(totalCount / pageSize);
+
+		const restaurants = await Restaurant.find()
+			.skip((page - 1) * pageSize)
+			.limit(pageSize);
+
+		res.status(200).json({
+			restaurants,
+			totalPages,
+			currentPage: pageSize,
+			pageSize,
+			totalCount,
+		});
+	} catch (error) {
+		console.log(error);
+		res.status(500).json({ message: "Error fetching restaurants" });
+	}
+};
+
 export const featuredRestaurants = async (req: Request, res: Response) => {
 	try {
-		const featuredRestaurants = await Restaurant.find();
-		featuredRestaurants.sort(
-			(a, b) => b.lastUpdated.getTime() - a.lastUpdated.getTime(),
-		);
-		const lastFiveHotels = featuredRestaurants.slice(0, 4);
+		const featured = await Restaurant.find();
+		featured.sort((a, b) => b.lastUpdated.getTime() - a.lastUpdated.getTime());
+		const lastFiveHotels = featured.slice(0, 4);
 		res.status(200).json(lastFiveHotels);
 	} catch (error) {
 		console.log(error);
@@ -98,11 +121,9 @@ const searchRestaurant = async (req: Request, res: Response) => {
 	}
 };
 
-const searchFunction = async (req: Request, res: Response) => {};
-
 export default {
 	getRestaurant,
 	searchRestaurant,
 	featuredRestaurants,
-	searchFunction,
+	getAllRestaurants,
 };
