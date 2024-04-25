@@ -42,17 +42,22 @@ export const useFeaturedRestaurants = () => {
 	return { restaurants, isLoading };
 };
 
-export const useGetALLRestaurants = () => {
-	const getAllRestaurants = async (): Promise<Restaurant[]> => {
-		const response = await fetch(`${API_BASE_URL}/api/all-restaurants`);
+export const useGetALLRestaurants = (page: number, pageSize: number) => {
+	const getAllRestaurants = async (
+		page: number,
+		pageSize: number,
+	): Promise<Restaurant[]> => {
+		const response = await fetch(
+			`${API_BASE_URL}/api/all-restaurants?page=${page}&pageSize=${pageSize}`,
+		);
 		if (!response.ok) {
 			throw new Error("Failed to fetch all Restaurants");
 		}
 		return response.json();
 	};
 	const { data: allRestaurants, isLoading } = useQuery(
-		"getAllRestaurants",
-		getAllRestaurants,
+		["getAllRestaurants", page, pageSize],
+		() => getAllRestaurants(page, pageSize),
 	);
 
 	return { allRestaurants, isLoading };
@@ -64,14 +69,21 @@ export const useSearchRestaurants = (
 ) => {
 	const createSearchRequest = async (): Promise<RestaurantSearchResponse> => {
 		const params = new URLSearchParams();
+
+		if (city) {
+			params.set("city", city);
+		}
+
 		params.set("searchQuery", searchState.searchQuery);
 		params.set("page", searchState.page.toString());
 		params.set("selectedCuisines", searchState.selectedCuisines.join(","));
 		params.set("sortOption", searchState.sortOption);
 
-		const response = await fetch(
-			`${API_BASE_URL}/api/restaurant/search/${city}?${params.toString()}`,
-		);
+		const url = city
+			? `${API_BASE_URL}/api/restaurant/search/${city}?${params.toString()}`
+			: `${API_BASE_URL}/api/restaurant/search?${params.toString()}`;
+
+		const response = await fetch(url);
 
 		if (!response.ok) {
 			throw new Error("Failed to get restaurant");
@@ -81,9 +93,9 @@ export const useSearchRestaurants = (
 	};
 
 	const { data: results, isLoading } = useQuery(
-		["searchRestaurants", searchState],
+		["searchRestaurants", searchState, city],
 		createSearchRequest,
-		{ enabled: !!city },
+		{ enabled: !!city || !!searchState.searchQuery },
 	);
 
 	return { results, isLoading };

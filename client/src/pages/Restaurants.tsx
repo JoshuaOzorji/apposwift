@@ -10,9 +10,10 @@ const Restaurants = () => {
 	}
 	return (
 		<main>
-			{allRestaurants.map((restaurant) => (
-				<SearchResultCard restaurant={restaurant} />
-			))}
+			{Array.isArray(allRestaurants) &&
+				allRestaurants.map((restaurant) => (
+					<SearchResultCard restaurant={restaurant} />
+				))}
 		</main>
 	);
 };

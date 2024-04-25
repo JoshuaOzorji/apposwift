@@ -53,40 +53,21 @@ export const featuredRestaurants = async (req: Request, res: Response) => {
 	}
 };
 
+interface Query {
+	city?: RegExp;
+	cuisines?: { $all: RegExp[] };
+	[key: string]: any;
+}
 const searchRestaurant = async (req: Request, res: Response) => {
 	try {
+		let query: Query = {};
+
 		const city = req.params.city;
-
-		const searchQuery = (req.query.searchQuery as string) || "";
-		const selectedCuisines = (req.query.selectedCuisines as string) || "";
-		const sortOption = (req.query.sortOption as string) || "lastUpdated";
-		const page = parseInt(req.query.page as string) || 1;
-
-		let query: any = {};
-
-		query["city"] = new RegExp(city, "i");
-
-		const cityCheck = await Restaurant.countDocuments(query);
-
-		if (cityCheck === 0) {
-			return res.status(404).json({
-				data: [],
-				pagination: {
-					total: 0,
-					page: 1,
-					pages: 1,
-				},
-			});
+		if (city) {
+			query["city"] = new RegExp(city, "i");
 		}
 
-		if (selectedCuisines) {
-			const cuisinesArray = selectedCuisines
-				.split(",")
-				.map((cuisine) => new RegExp(cuisine, "i"));
-
-			query["cuisines"] = { $all: cuisinesArray };
-		}
-
+		const searchQuery = req.query.searchQuery as string;
 		if (searchQuery) {
 			const searchRegex = new RegExp(searchQuery, "i");
 			query["$or"] = [
@@ -95,16 +76,40 @@ const searchRestaurant = async (req: Request, res: Response) => {
 			];
 		}
 
+		const selectedCuisines = req.query.selectedCuisines as string;
+		if (selectedCuisines) {
+			const cuisinesArray = selectedCuisines
+				.split(",")
+				.map((cuisine) => new RegExp(cuisine, "i"));
+			query["cuisines"] = { $all: cuisinesArray };
+		}
+
+		const sortOption = (req.query.sortOption as string) || "lastUpdated";
+
 		const pageSize = 5;
+		const page = parseInt(req.query.page as string) || 1;
 		const skip = (page - 1) * pageSize;
 
-		const restaurants = await Restaurant.find(query)
-			.sort({ [sortOption]: 1 })
-			.skip(skip)
-			.limit(pageSize)
-			.lean();
+		let restaurants;
+		let total;
 
-		const total = await Restaurant.countDocuments(query);
+		if (Object.keys(query).length === 0) {
+			// If no city is specified, return all restaurants
+			restaurants = await Restaurant.find()
+				.sort({ [sortOption]: 1 })
+				.skip(skip)
+				.limit(pageSize)
+				.lean();
+			total = await Restaurant.countDocuments();
+		} else {
+			// If city is specified, perform city-based search
+			restaurants = await Restaurant.find(query)
+				.sort({ [sortOption]: 1 })
+				.skip(skip)
+				.limit(pageSize)
+				.lean();
+			total = await Restaurant.countDocuments(query);
+		}
 
 		const response = {
 			data: restaurants,
