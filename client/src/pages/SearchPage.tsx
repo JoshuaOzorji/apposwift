@@ -130,6 +130,59 @@ const SearchPage = () => {
 		);
 	}
 
+	// Render search results if city is provided and data is available
+	if (results?.data && city) {
+		return (
+			<main className='flex flex-col md:flex-row gap-6 my-2 font-lato'>
+				<aside className='md:w-[25%] border border-slate-300 rounded-md px-2'>
+					<div>
+						<SearchBar
+							onSubmit={setSearchQuery}
+							searchQuery={searchState.searchQuery}
+							onReset={resetSearch}
+							placeHolder='Search by Cuisine or Restaurant name'
+						/>
+					</div>
+					<div id='cuisines-list'>
+						<CuisineFilter
+							selectedCuisines={searchState.selectedCuisines}
+							onChange={setSelectedCuisines}
+							isExpanded={isExpanded}
+							onExpandedClick={() =>
+								setIsExpanded((prevIsExpanded) => !prevIsExpanded)
+							}
+						/>
+					</div>
+				</aside>
+
+				<div className='md:w-[75%] space-y-4'>
+					<div className='flex justify-between items-center py-0.5'>
+						<SearchResultInfo
+							total={results?.pagination.total || 0}
+							city={city || ""}
+						/>
+
+						<SortOptionDropdown
+							sortOption={searchState.sortOption}
+							onChange={(value) => setSortOption(value)}
+						/>
+					</div>
+
+					<span className='space-y-4'>
+						{results?.data.map((restaurant) => (
+							<SearchResultCard restaurant={restaurant} />
+						))}
+					</span>
+
+					<PaginationSelector
+						page={results?.pagination.page || 1}
+						pages={results?.pagination.pages || 1}
+						onPageChange={setPage}
+					/>
+				</div>
+			</main>
+		);
+	}
 	if (!results?.data || !city) {
 		return (
 			<span>
