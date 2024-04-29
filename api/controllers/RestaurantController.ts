@@ -17,24 +17,26 @@ const getRestaurant = async (req: Request, res: Response) => {
 };
 
 const getAllRestaurants = async (req: Request, res: Response) => {
-	const page = parseInt(req.query.page as string) || 1;
-	const pageSize = parseInt(req.query.pageSize as string) || 10;
-
 	try {
-		const totalCount = await Restaurant.countDocuments();
-		const totalPages = Math.ceil(totalCount / pageSize);
+		const page = parseInt(req.query.page as string, 1);
+		const sortOption = (req.query.sortOption as string) || "lastUpdated";
+		const pageSize = 5;
+		const skip = (page - 1) * pageSize;
 
-		const restaurants = await Restaurant.find()
-			.skip((page - 1) * pageSize)
-			.limit(pageSize);
+		let query = {};
 
-		res.status(200).json({
-			restaurants,
-			totalPages,
-			currentPage: pageSize,
-			pageSize,
-			totalCount,
-		});
+		const restaurants = await Restaurant.find(query)
+			.sort({ [sortOption]: 1 })
+			.skip(skip)
+			.limit(pageSize)
+			.lean();
+		const total = await Restaurant.countDocuments(query);
+
+		const response = {
+			data: restaurants,
+			pagination: { total, page, pages: Math.ceil(total / pageSize) },
+		};
+		res.status(200).json(response);
 	} catch (error) {
 		console.log(error);
 		res.status(500).json({ message: "Error fetching restaurants" });

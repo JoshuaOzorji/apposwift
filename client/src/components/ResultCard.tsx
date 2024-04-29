@@ -8,7 +8,7 @@ type Props = {
 	restaurant: Restaurant;
 };
 
-const SearchResultCard = ({ restaurant }: Props) => {
+const ResultCard = ({ restaurant }: Props) => {
 	return (
 		<div>
 			<Link
@@ -54,4 +54,4 @@ const SearchResultCard = ({ restaurant }: Props) => {
 	);
 };
 
-export default SearchResultCard;
+export default ResultCard;

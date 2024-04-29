@@ -42,25 +42,27 @@ export const useFeaturedRestaurants = () => {
 	return { restaurants, isLoading };
 };
 
-export const useGetALLRestaurants = (page: number, pageSize: number) => {
-	const getAllRestaurants = async (
-		page: number,
-		pageSize: number,
-	): Promise<Restaurant[]> => {
+export const useGetAllRestaurants = (page: number, sortOption: string) => {
+	const getAllRestaurants = async (): Promise<Restaurant[]> => {
 		const response = await fetch(
-			`${API_BASE_URL}/api/all-restaurants?page=${page}&pageSize=${pageSize}`,
+			`${API_BASE_URL}/api/restaurants?page=${page}&sortOption=${sortOption}`,
 		);
 		if (!response.ok) {
-			throw new Error("Failed to fetch all Restaurants");
+			throw new Error("Error fetching restaurants");
 		}
 		return response.json();
 	};
-	const { data: allRestaurants, isLoading } = useQuery(
-		["getAllRestaurants", page, pageSize],
-		() => getAllRestaurants(page, pageSize),
+
+	const { data: results, isLoading } = useQuery(
+		["getAllRestaurants", page, sortOption],
+		getAllRestaurants,
+		{ keepPreviousData: true },
 	);
 
-	return { allRestaurants, isLoading };
+	return {
+		results,
+		isLoading,
+	};
 };
 
 export const useSearchRestaurants = (

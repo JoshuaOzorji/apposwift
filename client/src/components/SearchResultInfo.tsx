@@ -17,6 +17,12 @@ const SearchResultInfo = ({ total, city }: Props) => {
 				<Link to='/' className='text-pry hover:text-sec animate underline'>
 					Change Location
 				</Link>
+
+				<Link
+					to='/restaurants'
+					className='text-pry hover:text-sec animate underline'>
+					See all restaurants
+				</Link>
 			</span>
 		</main>
 	);
