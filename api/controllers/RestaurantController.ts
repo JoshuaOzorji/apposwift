@@ -25,15 +25,16 @@ const getAllRestaurants = async (req: Request, res: Response) => {
 
 		let query = {};
 
-		const restaurants = await Restaurant.find(query)
+		const restaurant = await Restaurant.find(query)
 			.sort({ [sortOption]: 1 })
 			.skip(skip)
 			.limit(pageSize)
 			.lean();
+
 		const total = await Restaurant.countDocuments(query);
 
 		const response = {
-			data: restaurants,
+			data: restaurant,
 			pagination: { total, page, pages: Math.ceil(total / pageSize) },
 		};
 		res.status(200).json(response);

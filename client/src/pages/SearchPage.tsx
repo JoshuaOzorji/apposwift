@@ -72,9 +72,7 @@ const SearchPage = () => {
 	};
 
 	if (isLoading || !results) {
-		<span>
-			<Loading />
-		</span>;
+		<Loading />;
 	}
 
 	if (!results?.data || !city) {

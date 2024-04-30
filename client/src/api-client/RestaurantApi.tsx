@@ -1,5 +1,9 @@
 import { SearchState } from "@/pages/SearchPage";
-import { Restaurant, RestaurantSearchResponse } from "@/types";
+import {
+	Restaurant,
+	RestaurantResponse,
+	RestaurantSearchResponse,
+} from "@/types";
 import { useQuery } from "react-query";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
@@ -43,7 +47,7 @@ export const useFeaturedRestaurants = () => {
 };
 
 export const useGetAllRestaurants = (page: number, sortOption: string) => {
-	const getAllRestaurants = async (): Promise<Restaurant[]> => {
+	const getAllRestaurants = async (): Promise<RestaurantSearchResponse> => {
 		const response = await fetch(
 			`${API_BASE_URL}/api/restaurants?page=${page}&sortOption=${sortOption}`,
 		);
@@ -56,7 +60,9 @@ export const useGetAllRestaurants = (page: number, sortOption: string) => {
 	const { data: results, isLoading } = useQuery(
 		["getAllRestaurants", page, sortOption],
 		getAllRestaurants,
-		{ keepPreviousData: true },
+		{
+			keepPreviousData: true,
+		},
 	);
 
 	return {

@@ -54,6 +54,7 @@ export type Order = {
 	createdAt: string;
 	restaurantId: string;
 };
+
 export type RestaurantSearchResponse = {
 	data: Restaurant[];
 	pagination: {
