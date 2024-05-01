@@ -13,7 +13,7 @@ const SearchResultCard = ({ restaurant }: Props) => {
 		<div>
 			<Link
 				to={`/detail/${restaurant._id}`}
-				className='flex flex-col md:grid grid-cols-7  md:gap-6 border border-slate-300 rounded-md hover:shadow-md animate md:items-center '>
+				className='flex flex-col md:grid grid-cols-7  md:gap-6 border border-slate-300 rounded-md hover:shadow-md animate md:items-center my-3 bg-white'>
 				{/* image container	 */}
 				<img
 					src={restaurant.imageUrl}

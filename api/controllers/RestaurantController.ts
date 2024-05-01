@@ -18,7 +18,7 @@ const getRestaurant = async (req: Request, res: Response) => {
 
 const getAllRestaurants = async (req: Request, res: Response) => {
 	try {
-		const page = parseInt(req.query.page as string, 1);
+		const page = parseInt(req.query.page as string, 10) || 1;
 		const sortOption = (req.query.sortOption as string) || "lastUpdated";
 		const pageSize = 5;
 		const skip = (page - 1) * pageSize;

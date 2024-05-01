@@ -119,7 +119,7 @@ const SearchPage = () => {
 					/>
 				</div>
 
-				<span className='space-y-4'>
+				<span>
 					{results.data.map((restaurant) => (
 						<SearchResultCard restaurant={restaurant} />
 					))}
