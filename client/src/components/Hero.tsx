@@ -1,23 +1,40 @@
-import image from "/bg-image.jpg";
+import { IoIosSquare } from "react-icons/io";
 
 const Hero = () => {
 	return (
-		<div className='relative'>
-			<img
-				src={image}
-				className='object-cover md:h-[40vh] w-full opacity-[15%] '
-			/>
+		<main className='bg-neutral-200'>
+			<section className='inset-0 flex flex-col justify-center py-6 px-4 md:p-8 gap-1 md:gap-3 w-[90%] md:w-[60%] my-4 md:my-10'>
+				<div className='text-pry font-bold text-3xl md:text-6xl font-rubik'>
+					<p>Fastest</p>
+					<p className='text-acent'>Delivery &</p>
+					<span className='flex space-x-2'>
+						<p>Easy</p> <p className='text-acent'>Pickup</p>
+					</span>
+				</div>
 
-			<span className='absolute inset-0 flex flex-col justify-center p-2 sm:p-6 md:p-8 gap-1 md:gap-3'>
-				<h1 className='text-pry font-bold text-xl sm:text-3xl md:text-6xl font-rubik'>
-					The First & Only Choice
-				</h1>
 				<p className='text-black text-[12px] sm:text-[14px] md:text-lg font-light '>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
-					mollitia, molestiae quas vel sint commodi
+					Order up, dig in, and let the flavor begin!
 				</p>
-			</span>
-		</div>
+
+				<ul className='flex gap-4 text-h3 font-rubik flex-wrap'>
+					<li className='flex items-center'>
+						{" "}
+						<IoIosSquare className='text-acent' />
+						<p className='text-pry'>FAST DELIVERY</p>
+					</li>
+					<li className='flex items-center'>
+						{" "}
+						<IoIosSquare className='text-acent' />
+						<p className='text-pry'>PICK UP</p>
+					</li>
+					<li className='flex items-center'>
+						{" "}
+						<IoIosSquare className='text-acent' />
+						<p className='text-pry'>DINE IN</p>
+					</li>
+				</ul>
+			</section>
+		</main>
 	);
 };
 

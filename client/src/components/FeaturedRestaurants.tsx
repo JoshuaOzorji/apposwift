@@ -10,9 +10,9 @@ const FeaturedRestaurants = () => {
 	}
 
 	return (
-		<main className='flex flex-col gap-2 font-lato my-4'>
+		<main className='flex flex-col gap-2 font-lato my-4 border-t border-black/10 py-4'>
 			<div className='flex justify-between items-center'>
-				<h1 className='text-h2 font-bold font-rubik'>Featured</h1>
+				<h1 className='text-h1 font-bold font-rubik'>Featured</h1>
 
 				<Link
 					to='/restaurants'
