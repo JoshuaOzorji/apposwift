@@ -109,7 +109,7 @@ const DetailPage = () => {
 		return <Loading />;
 	}
 	return (
-		<main>
+		<main className=''>
 			<section className='flex flex-col md:flex-row w-full my-4 gap-6'>
 				<div className='md:w-[65%] space-y-3'>
 					<img

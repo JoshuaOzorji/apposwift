@@ -1,3 +1,4 @@
+import Contact from "@/components/Contact";
 import FeaturedRestaurants from "@/components/FeaturedRestaurants";
 import Hero from "@/components/Hero";
 import SearchBar, { SearchForm } from "@/components/SearchBar";
@@ -10,6 +11,7 @@ const HomePage = () => {
 	const handleSearchSubmit = (searchFormValues: SearchForm) => {
 		navigate({ pathname: `/search/${searchFormValues.searchQuery}` });
 	};
+
 	return (
 		<main className=''>
 			<div className='border-b border-black/10'>
@@ -20,6 +22,7 @@ const HomePage = () => {
 			</div>
 			<FeaturedRestaurants />
 			<Steps />
+			<Contact />
 		</main>
 	);
 };

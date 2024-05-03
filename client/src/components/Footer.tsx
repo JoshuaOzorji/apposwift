@@ -5,7 +5,7 @@ const Footer = () => {
 		<main className='bg-black/5 py-1.5'>
 			<section className='bucket flex justify-between items-center'>
 				<Link to='/'>
-					<span className='text-neutral-600 hover:text-pry font-bold text-[0.8rem] md:text-base'>
+					<span className='text-neutral-600 hover:text-pry font-bold text-[0.8rem] md:text-sm font-rubik'>
 						AppoSwift
 					</span>
 				</Link>

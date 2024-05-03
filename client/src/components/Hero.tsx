@@ -1,8 +1,9 @@
 import { IoIosSquare } from "react-icons/io";
+import { MdRestaurant } from "react-icons/md";
 
 const Hero = () => {
 	return (
-		<main className='bg-neutral-200'>
+		<main className='bg-neutral-200 flex items-center justify-between'>
 			<section className='inset-0 flex flex-col justify-center py-6 px-4 md:p-8 gap-1 md:gap-3 w-[90%] md:w-[60%] my-4 md:my-10'>
 				<div className='text-pry font-bold text-3xl md:text-6xl font-rubik'>
 					<p>Fastest</p>
@@ -16,7 +17,7 @@ const Hero = () => {
 					Order up, dig in, and let the flavor begin!
 				</p>
 
-				<ul className='flex gap-4 text-h3 font-rubik flex-wrap'>
+				<ul className='flex gap-1 md:gap-3 text-h3 font-rubik flex-wrap'>
 					<li className='flex items-center'>
 						{" "}
 						<IoIosSquare className='text-acent' />
@@ -34,6 +35,10 @@ const Hero = () => {
 					</li>
 				</ul>
 			</section>
+
+			<span className='hidden md:flex'>
+				<MdRestaurant className='text-[#9fa3a7]' size={300} />
+			</span>
 		</main>
 	);
 };

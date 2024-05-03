@@ -17,6 +17,7 @@ const Layout = ({ children, showHero = false }: Props) => {
 				{showHero && <Hero />}
 				<div>{children}</div>
 			</div>
+
 			<span>
 				<Footer />
 			</span>
