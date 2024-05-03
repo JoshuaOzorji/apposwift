@@ -1,7 +1,8 @@
 import { cuisineList } from "@/config/restaurant-options";
 import { Label } from "./ui/label";
-import { Check, ChevronDown, ChevronUp } from "lucide-react";
+import { FiCheck } from "react-icons/fi";
 import { ChangeEvent } from "react";
+import { IoChevronDown, IoChevronUp } from "react-icons/io5";
 
 type Props = {
 	onChange: (cuisines: string[]) => void;
@@ -60,7 +61,7 @@ const CuisineFilter = ({
 												? "border border-pry text-pry"
 												: "border border-slate-300"
 										}`}>
-										{isSelected && <Check size={18} />}
+										{isSelected && <FiCheck size={18} />}
 										{cuisine}
 									</Label>
 								</div>
@@ -75,11 +76,11 @@ const CuisineFilter = ({
 						className=' text-h6 items-center flex mx-auto hover:underline animate'>
 						{isExpanded ? (
 							<span className='flex items-center'>
-								View less <ChevronUp size={18} />
+								View less <IoChevronUp size={18} />
 							</span>
 						) : (
 							<span className='flex items-center'>
-								View More <ChevronDown size={18} />
+								View More <IoChevronDown size={18} />
 							</span>
 						)}
 					</button>
