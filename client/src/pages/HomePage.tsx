@@ -13,15 +13,18 @@ const HomePage = () => {
 	};
 
 	return (
-		<main className=''>
-			<div className='border-b border-black/10'>
-				<Hero />
-			</div>
-			<div className='md:w-[50%] mx-auto'>
-				<SearchBar onSubmit={handleSearchSubmit} placeHolder='Search' />
-			</div>
-			<FeaturedRestaurants />
-			<Steps />
+		<main>
+			<section className='bucket'>
+				<div className='border-b border-black/10'>
+					<Hero />
+				</div>
+				<div className='md:w-[50%] mx-auto'>
+					<SearchBar onSubmit={handleSearchSubmit} placeHolder='Search' />
+				</div>
+				<FeaturedRestaurants />
+				<Steps />
+			</section>
+
 			<Contact />
 		</main>
 	);

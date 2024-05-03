@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import Layout from "./layouts/Layout";
+import Layout2 from "./layouts/Layout2";
 import HomePage from "./pages/HomePage";
 import AuthCallbackPage from "./pages/AuthCallbackPage";
 import UserProfilePage from "./pages/UserProfilePage";
@@ -16,9 +17,9 @@ const AppRoutes = () => {
 			<Route
 				path='/'
 				element={
-					<Layout>
+					<Layout2>
 						<HomePage />
-					</Layout>
+					</Layout2>
 				}
 			/>
 
