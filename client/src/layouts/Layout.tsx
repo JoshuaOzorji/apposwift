@@ -9,7 +9,7 @@ type Props = {
 const Layout = ({ children, showHero = false }: Props) => {
 	return (
 		<main className='font-lato animate flex flex-col min-h-screen bg-[#f2f4f3] relative'>
-			<div className='sticky'>
+			<div>
 				<Header />
 			</div>
 
