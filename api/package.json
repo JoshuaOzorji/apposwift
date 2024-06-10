@@ -2,13 +2,12 @@
 	"name": "api",
 	"version": "1.0.0",
 	"description": "AppoSwift",
-	"main": "server.ts",
+	"main": "dist/server.js",
 	"scripts": {
-		"dev": "concurrently \"nodemon\" \"npm run stripe\"",
-		"stripe": "stripe listen --forward-to localhost:7000/api/order/checkout/webhook",
 		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "nodemon server.ts",
 		"build": "npm install && npx tsc",
-		"start": "node server.ts"
+		"start": "node dist/server.js"
 	},
 	"keywords": [],
 	"author": "",

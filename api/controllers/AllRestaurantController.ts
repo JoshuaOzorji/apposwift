@@ -1,3 +1,4 @@
+import { Request, Response } from "express";
 import Restaurant from "../models/restaurant.model";
 
 const getAllRestaurants = async (req: Request, res: Response) => {
