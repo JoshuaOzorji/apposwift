@@ -64,7 +64,7 @@ git clone https://github.com/JoshuaOzorji/apposwift.git
 cd apposwift
 Install the dependencies:
 sh
-Copy code
+
 npm install
 # or
 yarn install
@@ -72,7 +72,7 @@ Set up environment variables:
 Create a .env file in the root directory and add the following variables:
 
 env
-Copy code
+
 REACT_APP_AUTH0_DOMAIN=your-auth0-domain
 REACT_APP_AUTH0_CLIENT_ID=your-auth0-client-id
 REACT_APP_STRIPE_PUBLIC_KEY=your-stripe-public-key
@@ -81,24 +81,7 @@ MONGO_URI=your-mongodb-uri
 CLOUDINARY_CLOUD_NAME=your-cloudinary-cloud-name
 CLOUDINARY_API_KEY=your-cloudinary-api-key
 CLOUDINARY_API_SECRET=your-cloudinary-api-secret
-Running the App
-Start the frontend:
-sh
-Copy code
-npm start
-# or
-yarn start
-Start the backend:
-sh
-Copy code
-cd backend
-npm start
-# or
-yarn start
-The app should now be running on http://localhost:3000.
 
-Contributing
-Contributions are welcome! Please read our Contributing Guide to learn how to get involved.
 
 
 
