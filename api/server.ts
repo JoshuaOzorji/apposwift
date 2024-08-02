@@ -8,6 +8,7 @@ import myRestaurantRoute from "./routes/MyRestaurantRoute";
 import restaurantRoute from "./routes/RestaurantRoutes";
 import orderRoute from "./routes/OrderRoute";
 import allRestaurantsRoute from "./routes/AllRestaurantsRoute";
+import job from "./cron.js";
 
 mongoose
 	.connect(process.env.MONGODB_CONNECTION_STRING as string)
@@ -21,6 +22,7 @@ cloudinary.config({
 const app = express();
 
 app.use(cors());
+job.start();
 
 app.use("/api/order/checkout/webhook", express.raw({ type: "*/*" }));
 
